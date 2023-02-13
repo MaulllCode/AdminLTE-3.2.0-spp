@@ -1,7 +1,7 @@
 <div>
-  <!-- session -->
   <?php
-  if ($_SESSION["role"] !== "Admin") {
+  // <!-- session -->
+  if ($_SESSION["role"] == "Owner") {
     echo '<script>alert("Hanya Admin yang dapat mengakses halaman ini !!!"); window.location.href="index.php"</script>';
   }
   ?>
@@ -32,26 +32,21 @@
         <div class="card-header col">
           <div class="box box-primary">
             <div class="box-header pb-3">
-              <a href="index.php?page=tambah_transaksi" class="btn btn-primary" role="button" title="Tambah Data"><i class="fas fa-plus"></i></i> Tambah</a>
+              <a href="index.php?page=cari_member" class="btn btn-primary" role="button"><i class="fas fa-plus"></i></i> Tambah</a>
+              <a href="index.php?page=konfirmasi" class="btn btn-primary" role="button"><i class="fas fa-cart-shopping"></i></i>Konfirmasi Pembayaran</a>
+              </a>
             </div>
             <div class="box-body table-responsive">
               <div class="box-body table-responsive">
                 <table id="transaksi" class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>ID OUTLET</th>
+                      <th>NO</th>
                       <th>KODE INVOICE</th>
-                      <th>ID MEMBER</th>
-                      <th>TANGGAL</th>
-                      <th>BATAS WAKTU</th>
-                      <th>TANGGAL BAYAR</th>
-                      <th>BIAYA TAMBAHAN</th>
-                      <th>DISKON</th>
-                      <th>PAJAK</th>
-                      <th>STATUS</th>
-                      <th>DIBAYAR</th>
-                      <th>ID USER</th>
+                      <th>MEMBER</th>
+                      <th>STATUS CUCIAN</th>
+                      <th>STATUS PEMBAYARAN</th>
+                      <th>TOTAL HARGA</th>
                       <th>AKSI</th>
                     </tr>
                   </thead>
@@ -60,30 +55,25 @@
                     <?php
                     include "conf/conn.php";
                     $no = 1;
-                    $query = mysqli_query($kon, "SELECT * FROM tb_transaksi");
-                    while ($row = mysqli_fetch_array($query)) {
+                    $data = mysqli_query($kon, "SELECT tb_transaksi.*,tb_member.nama , tb_detail_transaksi.id_paket, tb_detail_transaksi.harga FROM tb_transaksi INNER JOIN tb_member ON tb_member.id_member = tb_transaksi.id_member INNER JOIN tb_detail_transaksi ON tb_detail_transaksi.id_transaksi = tb_transaksi.id_transaksi WHERE tb_transaksi.id_transaksi");
                     ?>
+                    <?php
+                    if (mysqli_num_rows($data) > 0) {
+                      while ($transaksi = mysqli_fetch_assoc($data)) { ?>
 
-                      <tr>
-                        <td><?php echo $no++; ?></td>
-                        <td><?php echo $row['id_outlet']; ?></td>
-                        <td><?php echo $row['kode_invoice']; ?></td>
-                        <td><?php echo $row['id_member']; ?></td>
-                        <td><?php echo $row['tgl']; ?></td>
-                        <td><?php echo $row['batas_waktu']; ?></td>
-                        <td><?php echo $row['tgl_bayar']; ?></td>
-                        <td><?php echo $row['biaya_tambahan']; ?></td>
-                        <td><?php echo $row['diskon']; ?>%</td>
-                        <td><?php echo $row['pajak']; ?>%</td>
-                        <td><?php echo $row['status']; ?></td>
-                        <td><?php echo $row['dibayar']; ?></td>
-                        <td><?php echo $row['id_user']; ?></td>
-                        <td>
-                          <a href="index.php?page=ubah_transaksi&id_transaksi=<?= $row['id_transaksi']; ?>" class="btn btn-success" role="button" title="Ubah Data"><i class="fas fa-edit"></i></a>
-                          <a onclick="return confirm('Apakah yakin menghapus Data')" href="pages/transaksi/hapus_transaksi.php?id_transaksi=<?= $row['id_transaksi']; ?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="fas fa-trash"></i></a>
-                        </td>
-                      </tr>
-                    <?php } ?>
+                        <tr>
+                          <td><?php echo $no++; ?></td>
+                          <td><?= $transaksi['kode_invoice'] ?></td>
+                          <td><?= $transaksi['nama'] ?></td>
+                          <td><?= $transaksi['status'] ?></td>
+                          <td><?= $transaksi['dibayar'] ?></td>
+                          <td><?= 'Rp ' . number_format($transaksi['harga']) ?></td>
+                          <td>
+                            <a href="index.php?page=detail&id_transaksi=<?= $transaksi['id_transaksi']; ?>" class="btn btn-success" role="button" title="Detail Data">Detail Data</a>
+                          </td>
+                        </tr>
+                    <?php }
+                    } ?>
                   </tbody>
                 </table>
               </div>

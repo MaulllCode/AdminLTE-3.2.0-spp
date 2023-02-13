@@ -1,8 +1,6 @@
 <div>
-  <!-- Proses -->
   <?php
-
-  // include "../../conf/conn.php";
+  // <!-- Proses -->
   if (isset($_POST['ubah'])) {
     $id_member = $_POST['id_member'];
     $nama = $_POST['nama'];
@@ -22,15 +20,15 @@
   }
   ?>
 
-  <!-- session -->
   <?php
+  // <!-- session -->
   if ($_SESSION["role"] == "Owner") {
     echo '<script>alert("Hanya Admin yang dapat mengakses halaman ini !!!"); window.location.href="index.php"</script>';
   }
   ?>
 
-  <!-- ambil data -->
   <?php
+  // <!-- ambil data -->
   $query = mysqli_query($kon, "SELECT * FROM tb_member WHERE id_member='" . $_GET['id_member'] . "'");
   $row = mysqli_fetch_array($query);
   ?>

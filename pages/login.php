@@ -7,7 +7,7 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-  <title>Aplikasi Pengelolaan Laundry | Dashboard</title>
+  <title>Aplikasi Pengelolaan Laundry | Login</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -41,14 +41,17 @@
       $username = (htmlentities($_POST['username']));
       $password = (htmlentities($_POST['password']));
       $check    = mysqli_query($kon, "SELECT * FROM tb_user WHERE username = '$username' AND password = '$password'") or die("Connection failed: " . mysqli_connect_error());
-      if (mysqli_num_rows($check) >= 1) {
-        while ($row = mysqli_fetch_array($check)) {
+      if (mysqli_num_rows($check) > 0) {
+        while ($row = mysqli_fetch_assoc($check)) {
           if ($row['role'] == "Admin") {
 
             // buat session login dan username
             $_SESSION['username'] = $username;
             $_SESSION['role'] = "Admin";
             $_SESSION['login'] = 1;
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['id_user'] = $row['id_user'];
+            $_SESSION['id_outlet'] = $row['id_outlet'];
             // alihkan ke halaman dashboard admin
 
             // cek jika user login sebagai pegawai
@@ -57,17 +60,21 @@
             $_SESSION['username'] = $username;
             $_SESSION['role'] = "Kasir";
             $_SESSION['login'] = 1;
+            $_SESSION['id_user'] = $row['id_user'];
+            $_SESSION['id_outlet'] = $row['id_outlet'];
             // alihkan ke halaman dashboard pegawai
           } else if ($row['role'] == "Owner") {
             // buat session login dan username
             $_SESSION['username'] = $username;
             $_SESSION['role'] = "Owner";
             $_SESSION['login'] = 1;
+            $_SESSION['id_user'] = $row['id_user'];
+            $_SESSION['id_outlet'] = $row['id_outlet'];
             // alihkan ke halaman dashboard pegawai
           }
     ?>
           <script>
-            alert("Selamat datang <?= $row['username']; ?> Kamu Telah Login Ke Aplikasi Laundry !!!");
+            alert("Selamat datang <?= $row['username']; ?> Kamu Telah Login Ke Aplikasi Laundry sebagai <?= $row['role']; ?> !!!");
             window.location.href = "../index.php";
           </script>
     <?php

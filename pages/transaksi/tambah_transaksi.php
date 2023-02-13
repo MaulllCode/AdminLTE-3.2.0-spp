@@ -1,41 +1,69 @@
 <div>
   <?php
+
+  $tgl = date('Y-m-d h:i:s');
+  $seminggu = mktime(0, 0, 0, date("n"), date("j") + 7, date("Y"));
+  $batas_waktu = date("Y-m-d h:i:s", $seminggu);
+
+  $kode   = 'PESANAN' . Date('Ymdsi');
+  $id_outlet = $_SESSION['id_outlet'];
+  $id_user   = $_SESSION['id_user'];
+  $id_member = $_GET['id_member'];
+
+  $outletq = mysqli_query($kon, "SELECT nama from tb_outlet WHERE id_outlet = " . $id_outlet);
+  $outlet = mysqli_fetch_assoc($outletq);
+
+  $memberq = mysqli_query($kon, "SELECT nama from tb_member WHERE id_member = " . $id_member);
+  $member = mysqli_fetch_assoc($memberq);
+
+  $paket = mysqli_query($kon, "SELECT * FROM tb_paket WHERE id_outlet = " . $id_outlet);
+
+  // <!-- proses -->
   if (isset($_POST['tambah'])) {
-    $id_outlet = $_POST['id_outlet'];
     $kode_invoice = $_POST['kode_invoice'];
-    $id_member = $_POST['id_member'];
-    $tgl = $_POST['tgl'];
-    $batas_waktu = $_POST['batas_waktu'];
-    $tgl_bayar = $_POST['tgl_bayar'];
-    $id_user = $_POST['id_user'];
+    $biaya_tambahan = $_POST['biaya_tambahan'];
+    $diskon = $_POST['diskon'];
+    $pajak = $_POST['pajak'];
 
-    $sql = "INSERT INTO tb_transaksi VALUES (NULL, '$id_outlet', '$kode_invoice', '$id_member', '$tgl', '$batas_waktu', '$tgl_bayar', '0', '0', '0', 'Baru', 'Belum_dibayar', '$id_user')";
+    $sql = "INSERT INTO tb_transaksi VALUES (NULL, '$id_outlet', '$kode_invoice', '$id_member', '$tgl',  '$batas_waktu', NULl, '$biaya_tambahan', '$diskon', '$pajak', 'Baru', 'Belum_dibayar', '$id_user')";
 
-    $result = mysqli_query($kon, $sql);
+    $result1 = mysqli_query($kon, $sql);
 
-    if (!$result) {
-      die("Connection failed: " . mysqli_connect_error());
-    } else {
-      if ($_SESSION["role"] == "Kasir") {
-        echo '<script>alert("Data Berhasil Ditambahkan !!!");
-window.location.href="index.php?page=transaksi"</script>';
+    if ($result1 == 1) {
+
+      $id_paket = $_POST['id_paket'];
+      $qty = $_POST['qty'];
+
+      $hargapaketq = mysqli_query($kon, "SELECT * from tb_paket WHERE id_paket = " . $id_paket);
+      $hargapaket =  mysqli_fetch_assoc($hargapaketq);
+
+      $harga = $hargapaket['harga'] * $qty;
+      $kode_invoice;
+
+      $transaksiq = mysqli_query($kon, "SELECT * FROM tb_transaksi WHERE kode_invoice = '" . $kode_invoice . "'");
+      $transaksi = mysqli_fetch_assoc($transaksiq);
+
+      $id_transaksi = $transaksi['id_transaksi'];
+
+      $sql1 = "INSERT INTO tb_detail_transaksi VALUES (NULL, '$id_transaksi', '$id_paket', '$qty', '$harga', NULL, NULL)";
+
+      $result = mysqli_query($kon, $sql1);
+
+      if ($result == 1) {
+        echo '<script>alert("Transaksi Berhasil ditambahkan"); window.location.href="index.php?page=transaksi_sukses&id_transaksi=' . $id_transaksi, '"</script>';
+        // header('location: index.php?page=transaksi_sukses.php&id=' . $id_transaksi);
       } else {
-        echo '<script>alert("Data Berhasil Ditambahkan !!!");
-  window.location.href="index.php?page=data_transaksi"</script>';
+        echo "gagal";
+        die("Connection failed: " . mysqli_connect_error());
       }
     }
   }
-  ?>
-
-  <!-- session -->
-  <?php
+  // <!-- session -->
   if ($_SESSION["role"] == "Owner") {
     echo '<script>alert("Hanya Admin yang dapat mengakses halaman ini !!!"); window.location.href="index.php"</script>';
   }
   ?>
 </div>
-
-
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -69,70 +97,48 @@ window.location.href="index.php?page=transaksi"</script>';
               <div class="box-body">
                 <div class="form-group">
                   <label>ID OUTLET</label>
-                  <select name="id_outlet" class="form-control form-control" placeholder="ID OUTLET" required id="defaultInput">
-                    <option value=""> - Pilihan Outlet - </option>
-                    <?php
-                    $query = "SELECT * FROM tb_outlet";
-                    $data = mysqli_query($kon, $query);
-                    while ($key = mysqli_fetch_array($data)) { ?>
-                      <option value="<?= $key['id_outlet']; ?>"><?= $key['nama']; ?></option>
-                    <?php } ?>
-                  </select>
+                  <input type="text" name="" class="form-control" placeholder="ID OUTLET" required value="<?= $outlet['nama']; ?>" readonly>
                 </div>
                 <div class="form-group">
                   <label>KODE INVOICE</label>
-                  <input type="text" id="defaultInput" name="kode_invoice" class="form-control" placeholder="KODE INVOICE" required>
+                  <input type="text" name="kode_invoice" value="<?= $kode; ?>" readonly class="form-control" placeholder="KODE INVOICE" required>
                 </div>
                 <div class="form-group">
                   <label>ID MEMBER</label>
-                  <select name="id_member" class="form-control form-control" placeholder="ID MEMBER" required id="defaultInput">
-                    <option value=""> - Pilihan Member - </option>
+                  <input type="text" name="" readonly class="form-control" value="<?= $member['nama']; ?>" placeholder="ID MEMBER" required>
+                </div>
+                <div class="form-group">
+                  <label>Pilih Paket</label>
+                  <select name="id_paket" class="form-control" required>
+                    <option value="">-- Pilihan Paket --</option>
                     <?php
-                    $query = "SELECT * FROM tb_member";
-                    $data = mysqli_query($kon, $query);
-                    while ($key = mysqli_fetch_array($data)) { ?>
-                      <option value="<?= $key['id_member']; ?>"><?= $key['nama']; ?></option>
+                    while ($key = mysqli_fetch_array($paket)) {
+                    ?>
+                      <option value="<?= $key['id_paket'] ?>"><?= $key['jenis'];  ?></option>
                     <?php } ?>
                   </select>
                 </div>
                 <div class="form-group">
-                  <label>TANGGAL</label>
-                  <input type="date" name="tgl" id='tanggal' class="form-control" placeholder="TANGGAL" required onchange='cetakTanggal()'>
-                </div>
-                <script>
-                  // set default tanggal saat ini
-                  document.querySelector('#tanggal').value = new Date().toISOString().substring(0, 10);
-
-                  // fungsi onchange cetak nilai
-                  function cetakTanggal() {
-                    var tanggal = document.querySelector('#tanggal').value;
-                    document.querySelector('#cetak').innerHTML = tanggal.split('-')[2] + '-' + tanggal.split('-')[1] + '-' + tanggal.split('-')[0];
-                  }
-                </script>
-                <div class="form-group">
-                  <label>BATAS WAKTU</label>
-                  <input type="date" name="batas_waktu" class="form-control" placeholder="BATAS WAKTU" required>
+                  <label>JUMLAH</label>
+                  <input type="number" name="qty" class="form-control" placeholder="JUMLAH" required>
                 </div>
                 <div class="form-group">
-                  <label>TANGGAL BAYAR</label>
-                  <input type="date" name="tgl_bayar" class="form-control" placeholder="TANGGAL BAYAR" required>
+                  <label>BIAYA TAMBAHAN</label>
+                  <input type="number" name="biaya_tambahan" value="0" class="form-control" placeholder="BIAYA TAMBAHAN" required>
                 </div>
                 <div class="form-group">
-                  <label>ID USER</label>
-                  <select name="id_user" class="form-control form-control" placeholder="ID USER" required id="defaultInput">
-                    <?php
-                    $query = "SELECT * FROM tb_user";
-                    $data = mysqli_query($kon, $query);
-                    $key = mysqli_fetch_assoc($data); { ?>
-                      <option value="<?= $key['id_user']; ?>"><?= $key['nama']; ?></option>
-                    <?php } ?>
-                  </select>
+                  <label>DISKON (%)</label>
+                  <input type="number" name="diskon" value="0" class="form-control" placeholder="DISKON" required>
+                </div>
+                <div class="form-group">
+                  <label>PAJAK (%)</label>
+                  <input type="number" value="0" name="pajak" class="form-control" placeholder="PAJAK" required>
                 </div>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary" name="tambah" title="Simpan Data"> <i class="glyphicon glyphicon-floppy-disk"></i> Simpan</button>
-                <button type="reset" class="btn btn-success" name="tambah" title="Reset Data"> <i class="glyphicon glyphicon-floppy-disk"></i> Reset</button>
+                <button type="submit" class="btn btn-primary" name="tambah" title="Simpan Data"> Simpan</button>
+                <button type="reset" class="btn btn-success" title="Reset Data"> Reset</button>
               </div>
             </form>
           </div>

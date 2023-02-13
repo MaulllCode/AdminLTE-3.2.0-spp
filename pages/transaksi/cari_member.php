@@ -24,6 +24,7 @@
           </ol>
         </div>
       </div><!-- /.row -->
+      <small>Jika Member belum terdaftar maka daftarkan dulu lewat menu Member</small>
     </div><!-- /.container-fluid -->
   </div>
 
@@ -32,14 +33,13 @@
       <div class="row">
         <div class="card-header col">
           <div class="box box-primary">
-            <div class="box-header pb-3">
-              <a href="index.php?page=tambah_member" class="btn btn-primary" role="button" title="Tambah Data"><i class="fas fa-plus"></i></i> Tambah</a>
+            <div class="box-header">
             </div>
             <div class="box-body table-responsive">
               <table id="member" class="table table-bordered table-hover">
                 <thead>
                   <tr>
-                    <th>NO</th>
+                    <th>ID</th>
                     <th>NAMA</th>
                     <th>ALAMAT</th>
                     <th>JENIS KELAMIN</th>
@@ -53,23 +53,22 @@
                   include "conf/conn.php";
                   $no = 1;
                   $query = mysqli_query($kon, "SELECT * FROM tb_member");
-                  while ($row = mysqli_fetch_array($query)) {
+                  if (mysqli_num_rows($query) > 0) {
+                    while ($row = mysqli_fetch_assoc($query)) {
                   ?>
 
-                    <tr>
-                      <td><?php echo $no++; ?></td>
-                      <td><?php echo $row['nama']; ?></td>
-                      <td><?php echo $row['alamat']; ?></td>
-                      <td><?php echo $row['jenis_kelamin']; ?></td>
-                      <td><?php echo $row['tlp']; ?></td>
-                      <td>
-                        <a href="index.php?page=ubah_member&id_member=<?= $row['id_member']; ?>" class="btn btn-success" role="button" title="Ubah Data"><i class="fas fa-edit"></i> Ubah</a>
-                        <a onclick="return confirm('Apakah yakin menghapus Data')" href="pages/member/hapus_member.php?id_member=<?= $row['id_member']; ?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
-                      </td>
-                    </tr>
-
-                  <?php } ?>
-
+                      <tr>
+                        <td><?php echo $no++; ?></td>
+                        <td><?php echo $row['nama']; ?></td>
+                        <td><?php echo $row['alamat']; ?></td>
+                        <td><?php echo $row['jenis_kelamin']; ?></td>
+                        <td><?php echo $row['tlp']; ?></td>
+                        <td>
+                          <a href="index.php?page=tambah_transaksi&id_member=<?= $row['id_member']; ?>" class="btn btn-primary" role="submit" title="Pilih Data">Pilih Data</a>
+                        </td>
+                      </tr>
+                  <?php }
+                  } ?>
                 </tbody>
               </table>
             </div>

@@ -1,6 +1,6 @@
 <div>
-  <!-- session -->
   <?php
+  // <!-- session -->
   if ($_SESSION["role"] !== "Admin") {
     echo '<script>alert("Hanya Admin yang dapat mengakses halaman ini !!!"); window.location.href="index.php"</script>';
   }
@@ -38,7 +38,7 @@
               <table id="outlet" class="table table-bordered table-hover">
                 <thead>
                   <tr>
-                    <th>ID</th>
+                    <th>NO</th>
                     <th>NAMA</th>
                     <th>ALAMAT</th>
                     <th>NO TELEPON</th>

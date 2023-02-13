@@ -1,4 +1,9 @@
 <?php
+
+if ($_SESSION["role"] !== "Admin") {
+  echo '<script>alert("Hanya Admin yang dapat mengakses halaman ini !!!"); window.location.href="index.php"</script>';
+}
+
 include "../../conf/conn.php";
 $id = $_GET['id_user'];
 

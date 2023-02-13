@@ -1,8 +1,7 @@
 <div>
-  <!-- proses -->
   <?php
 
-  // include "../../conf/conn.php";
+  // <!-- proses -->
   if (isset($_POST['tambah'])) {
     $nama = $_POST['nama'];
     $alamat = $_POST['alamat'];
@@ -19,10 +18,7 @@
       echo '<script>alert("Data Berhasil Ditambahkan !!!"); window.location.href="index.php?page=data_member"</script>';
     }
   }
-  ?>
-
-  <!-- session -->
-  <?php
+  // <!-- session -->
   if ($_SESSION["role"] == "Owner") {
     echo '<script>alert("Hanya Admin yang dapat mengakses halaman ini !!!"); window.location.href="index.php"</script>';
   }
@@ -82,7 +78,7 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary" name="tambah" title="Simpan Data"> <i class="glyphicon glyphicon-floppy-disk"></i> Simpan</button>
+                <button type="submit" class="btn btn-primary" name="tambah" title="Simpan Data"><i class="fas fa-floppy-disk"></i> Simpan</button>
                 <button type="reset" class="btn btn-success" name="tambah" title="Reset Data"> <i class="glyphicon glyphicon-floppy-disk"></i> Reset</button>
               </div>
             </form>

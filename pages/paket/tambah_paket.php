@@ -1,6 +1,6 @@
 <div>
-  <!-- proses -->
   <?php
+  // <!-- proses -->
   if (isset($_POST['tambah'])) {
     $id_outlet = $_POST['id_outlet'];
     $jenis = $_POST['jenis'];
@@ -19,8 +19,8 @@
   }
   ?>
 
-  <!-- session -->
   <?php
+  // <!-- session -->
   if ($_SESSION["role"] !== "Admin") {
     echo '<script>alert("Hanya Admin yang dapat mengakses halaman ini !!!"); window.location.href="index.php"</script>';
   }

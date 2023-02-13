@@ -1,6 +1,6 @@
 <div>
-  <!-- proses -->
   <?php
+  // <!-- proses -->
   if (isset($_POST['tambah'])) {
     $nama = $_POST['nama'];
     $username = $_POST['username'];
@@ -21,8 +21,8 @@
   }
   ?>
 
-  <!-- session -->
   <?php
+  // <!-- session -->
   if ($_SESSION["role"] !== "Admin") {
     echo '<script>alert("Hanya Admin yang dapat mengakses halaman ini !!!"); window.location.href="index.php"</script>';
   }

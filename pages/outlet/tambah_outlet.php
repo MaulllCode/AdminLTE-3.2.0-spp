@@ -1,6 +1,6 @@
 <div>
-  <!-- session -->
   <?php
+  // <!-- proses -->
   if (isset($_POST['tambah'])) {
     $nama = $_POST['nama'];
     $alamat = $_POST['alamat'];
@@ -16,10 +16,7 @@
       echo '<script>alert("Data Berhasil Ditambahkan !!!"); window.location.href="index.php?page=data_outlet"</script>';
     }
   }
-  ?>
-
-  <!-- session -->
-  <?php
+  // <!-- session -->
   if ($_SESSION["role"] !== "Admin") {
     echo '<script>alert("Hanya Admin yang dapat mengakses halaman ini !!!"); window.location.href="index.php"</script>';
   }

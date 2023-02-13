@@ -1,6 +1,6 @@
 <div>
-  <!-- proses -->
   <?php
+  // <!-- proses -->
   if (isset($_POST['ubah'])) {
     $id = $_POST['id_paket'];
     $id_outlet = $_POST['id_outlet'];
@@ -18,17 +18,11 @@
       echo '<script>alert("Data Berhasil Diubah !!!"); window.location.href="index.php?page=data_paket"</script>';
     }
   }
-  ?>
-
-  <!-- session -->
-  <?php
+  // <!-- session -->
   if ($_SESSION["role"] !== "Admin") {
     echo '<script>alert("Hanya Admin yang dapat mengakses halaman ini !!!"); window.location.href="index.php"</script>';
   }
-  ?>
-
-  <!-- ambil data -->
-  <?php
+  // <!-- ambil data -->
   $query = mysqli_query($kon, "SELECT * FROM tb_paket WHERE id_paket='" . $_GET['id_paket'] . "'");
   $row = mysqli_fetch_array($query);
   ?>

@@ -1,6 +1,6 @@
 <div>
-  <!-- proses -->
   <?php
+  // <!-- proses -->
   if (isset($_POST['ubah'])) {
     $id = $_POST['id_user'];
     $nama = $_POST['nama'];
@@ -19,17 +19,11 @@
       echo '<script>alert("Data Berhasil Diubah !!!"); window.location.href="index.php?page=data_user"</script>';
     }
   }
-  ?>
-
-  <!-- session -->
-  <?php
+  // <!-- session -->
   if ($_SESSION["role"] !== "Admin") {
     echo '<script>alert("Hanya Admin yang dapat mengakses halaman ini !!!"); window.location.href="index.php"</script>';
   }
-  ?>
-
-  <!-- ambil data -->
-  <?php
+  // <!-- ambil data -->
   $query = mysqli_query($kon, "SELECT * FROM tb_user WHERE id_user='" . $_GET['id_user'] . "'");
   $row = mysqli_fetch_array($query);
   ?>
@@ -119,3 +113,4 @@
     </section>
     <!-- /.content-header -->
   </div>
+</div>

@@ -16,7 +16,7 @@
     <div class="container-fluid">
       <!-- Small boxes (Stat box) -->
       <div class="row">
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-4 col-6">
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
@@ -36,7 +36,7 @@
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-4 col-6">
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
@@ -56,7 +56,7 @@
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-4 col-6">
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
@@ -77,25 +77,7 @@
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-danger">
-            <div class="inner">
-              <?php
-              include "conf/conn.php";
-              $query = mysqli_query($kon, "SELECT * FROM tb_paket");
-              $row = mysqli_num_rows($query);
-              ?>
-              <h3><?php echo $row; ?></h3>
 
-              <p>Jumlah Penghasilan</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div>
-
-          </div>
-        </div>
         <!-- ./col -->
       </div>
       <!-- /.row -->

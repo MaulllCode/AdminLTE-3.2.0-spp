@@ -1,6 +1,11 @@
 <div>
-  <!-- session -->
+  <?php
 
+  // <!-- session -->
+  if (!$_SESSION["role"]) {
+    echo '<script>alert("Hanya Admin yang dapat mengakses halaman ini !!!"); window.location.href="index.php"</script>';
+  }
+  ?>
 </div>
 
 <!-- Content Wrapper. Contains page content -->
@@ -28,26 +33,19 @@
         <div class="card-header col">
           <div class="box box-primary">
             <div class="box-header pb-3">
-              <a href="pages\cetak_laporan.php" target="_blank" class="btn btn-success" role="button" title="Laporan Transaksi"><i class="fas fa-print"></i></i> Print</a>
+              <a href="pages/cetak_laporan.php" target="_blank" class="btn btn-success" role="button" title="Laporan Transaksi"><i class="fas fa-print"></i></i> Print</a>
             </div>
             <div class="box-body table-responsive">
               <div class="box-body table-responsive">
                 <table id="transaksi" class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>ID OUTLET</th>
+                      <th>NO</th>
                       <th>KODE INVOICE</th>
-                      <th>ID MEMBER</th>
-                      <th>TANGGAL</th>
-                      <th>BATAS WAKTU</th>
-                      <th>TANGGAL BAYAR</th>
-                      <th>BIAYA TAMBAHAN</th>
-                      <th>DISKON</th>
-                      <th>PAJAK</th>
-                      <th>STATUS</th>
-                      <th>DIBAYAR</th>
-                      <th>ID USER</th>
+                      <th>MEMBER</th>
+                      <th>STATUS CUCIAN</th>
+                      <th>STATUS PEMBAYARAN</th>
+                      <th>TOTAL HARGA</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -55,24 +53,17 @@
                     <?php
                     include "conf/conn.php";
                     $no = 1;
-                    $query = mysqli_query($kon, "SELECT * FROM tb_transaksi");
-                    while ($row = mysqli_fetch_array($query)) {
+                    $query = mysqli_query($kon, "SELECT tb_transaksi.*,tb_member.nama , tb_detail_transaksi.id_paket, tb_detail_transaksi.harga FROM tb_transaksi INNER JOIN tb_member ON tb_member.id_member = tb_transaksi.id_member INNER JOIN tb_detail_transaksi ON tb_detail_transaksi.id_transaksi = tb_transaksi.id_transaksi WHERE tb_transaksi.id_transaksi");
+                    while ($transaksi = mysqli_fetch_array($query)) {
                     ?>
 
                       <tr>
                         <td><?php echo $no++; ?></td>
-                        <td><?php echo $row['id_outlet']; ?></td>
-                        <td><?php echo $row['kode_invoice']; ?></td>
-                        <td><?php echo $row['id_member']; ?></td>
-                        <td><?php echo $row['tgl']; ?></td>
-                        <td><?php echo $row['batas_waktu']; ?></td>
-                        <td><?php echo $row['tgl_bayar']; ?></td>
-                        <td><?php echo $row['biaya_tambahan']; ?></td>
-                        <td><?php echo $row['diskon']; ?>%</td>
-                        <td><?php echo $row['pajak']; ?>%</td>
-                        <td><?php echo $row['status']; ?></td>
-                        <td><?php echo $row['dibayar']; ?></td>
-                        <td><?php echo $row['id_user']; ?></td>
+                        <td><?= $transaksi['kode_invoice'] ?></td>
+                        <td><?= $transaksi['nama'] ?></td>
+                        <td><?= $transaksi['status'] ?></td>
+                        <td><?= $transaksi['dibayar'] ?></td>
+                        <td><?= $transaksi['harga'] ?></td>
                       </tr>
 
                     <?php } ?>
