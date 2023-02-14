@@ -60,6 +60,9 @@ if (isset($_GET['page'])) {
     case 'cari_member';
       include 'pages/transaksi/cari_member.php';
       break;
+    case 'hapus_transaksi';
+      include 'pages/transaksi/hapus_transaksi.php';
+      break;
     case 'tambah_transaksi':
       include 'pages/transaksi/tambah_transaksi.php';
       break;

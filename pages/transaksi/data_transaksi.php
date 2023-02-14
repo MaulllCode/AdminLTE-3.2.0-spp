@@ -31,9 +31,13 @@
       <div class="row">
         <div class="card-header col">
           <div class="box box-primary">
-            <div class="box-header pb-3">
-              <a href="index.php?page=cari_member" class="btn btn-primary" role="button"><i class="fas fa-plus"></i> Tambah</a>
-              <a href="index.php?page=konfirmasi" class="btn btn-primary" role="button"><i class="fas fa-check"></i> Konfirmasi Pembayaran</a>
+            <div class="box-header pb-3 row">
+              <div class="col">
+                <a href="index.php?page=cari_member" class="btn btn-primary" role="button"><i class="fas fa-plus"></i> Tambah</a>
+              </div>
+              <div class="col-sm-3 justify-content-end">
+                <a href="index.php?page=konfirmasi" class="btn btn-primary col" role="button"><i class="fas fa-shopping-cart"></i> Konfirmasi Pembayaran</a>
+              </div>
               </a>
             </div>
             <div class="box-body table-responsive">
@@ -70,6 +74,7 @@
                           <td><?= 'Rp ' . number_format($transaksi['harga']) ?></td>
                           <td>
                             <a href="index.php?page=detail&id_transaksi=<?= $transaksi['id_transaksi']; ?>" class="btn btn-success" role="button" title="Detail Data"><i class="fa fa-search"></i> Detail Data</a>
+                            <a onclick="return confirm('Apakah yakin menghapus Data')" href="index.php?page=hapus_transaksi&id_transaksi=<?= $transaksi['id_transaksi']; ?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
                           </td>
                         </tr>
                     <?php }

@@ -24,7 +24,7 @@
           </ol>
         </div>
       </div><!-- /.row -->
-      <small>Jika Member belum terdaftar maka daftarkan dulu lewat menu Member</small>
+      <small style="color: red;">Jika Member belum terdaftar maka daftarkan dulu lewat menu Member</small>
     </div><!-- /.container-fluid -->
   </div>
 
