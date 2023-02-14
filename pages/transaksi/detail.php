@@ -125,7 +125,7 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary" name="tambahan" title="Simpan Data"> Simpan</button>
+                <button type="submit" class="btn btn-primary" name="tambahan" title="Simpan Data"><i class="fas fa-save"></i> Simpan</button>
               </div>
             </form>
           </div>

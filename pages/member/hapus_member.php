@@ -18,5 +18,5 @@ if (!$result) {
   die("Connection failed: " . mysqli_connect_error());
 } else {
   echo '<script>alert("Data Berhasil Dihapus !!!");
-window.location.href="../../index.php?page=data_member"</script>';
+window.location.href="index.php?page=data_member"</script>';
 }

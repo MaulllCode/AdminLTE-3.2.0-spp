@@ -60,8 +60,8 @@
                       <td><?php echo $row['alamat']; ?></td>
                       <td><?php echo $row['tlp']; ?></td>
                       <td>
-                        <a href="index.php?page=ubah_outlet&id_outlet=<?= $row['id_outlet']; ?>" class="btn btn-success" role="button" title="Ubah Data"><i class="fas fa-edit"></i></a>
-                        <a onclick="return confirm('Apakah yakin menghapus Data')" href="pages/outlet/hapus_outlet.php?id_outlet=<?= $row['id_outlet']; ?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="fas fa-trash"></i></a>
+                        <a href="index.php?page=ubah_outlet&id_outlet=<?= $row['id_outlet']; ?>" class="btn btn-success" role="button" title="Ubah Data"><i class="fas fa-edit"></i> Ubah</a>
+                        <a onclick="return confirm('Apakah yakin menghapus Data')" href="index.php?page=hapus_outlet&id_outlet=<?= $row['id_outlet']; ?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
                       </td>
                     </tr>
 

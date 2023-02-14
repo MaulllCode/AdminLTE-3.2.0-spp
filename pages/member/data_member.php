@@ -55,7 +55,6 @@
                   $query = mysqli_query($kon, "SELECT * FROM tb_member");
                   while ($row = mysqli_fetch_array($query)) {
                   ?>
-
                     <tr>
                       <td><?php echo $no++; ?></td>
                       <td><?php echo $row['nama']; ?></td>
@@ -64,12 +63,10 @@
                       <td><?php echo $row['tlp']; ?></td>
                       <td>
                         <a href="index.php?page=ubah_member&id_member=<?= $row['id_member']; ?>" class="btn btn-success" role="button" title="Ubah Data"><i class="fas fa-edit"></i> Ubah</a>
-                        <a onclick="return confirm('Apakah yakin menghapus Data')" href="pages/member/hapus_member.php?id_member=<?= $row['id_member']; ?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
+                        <a onclick="return confirm('Apakah yakin menghapus Data')" href="index.php?page=hapus_member&id_member=<?= $row['id_member']; ?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
                       </td>
                     </tr>
-
                   <?php } ?>
-
                 </tbody>
               </table>
             </div>

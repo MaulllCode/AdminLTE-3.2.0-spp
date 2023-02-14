@@ -137,8 +137,8 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary" name="tambah" title="Simpan Data"> Simpan</button>
-                <button type="reset" class="btn btn-success" title="Reset Data"> Reset</button>
+                <button type="submit" class="btn btn-primary" name="tambah" title="Simpan Data"><i class="fas fa-save"></i> Simpan</button>
+                <button type="reset" class="btn btn-success" title="Reset Data"><i class="fas fa-retweet"></i> Reset</button>
               </div>
             </form>
           </div>

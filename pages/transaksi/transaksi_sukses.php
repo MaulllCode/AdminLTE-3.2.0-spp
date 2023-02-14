@@ -62,7 +62,7 @@
                       <h3>Berhasil Di Simpan</h3>
                       <h3><strong>Kode Invoice <?= $data['kode_invoice']; ?></strong><br></h3>
                       <h3><strong>Total Pembayaran <?= $data['harga']; ?></strong><br><br></h3>
-                      <a href="index.php?page=data_transaksi" class="btn btn-primary col-md-4 ml-auto mr-auto">Kembali Ke Menu Utama</a>
+                      <a href="index.php?page=data_transaksi" class="btn btn-primary col-md-4 ml-auto mr-auto"><i class="fas fa-home"></i> Kembali Ke Menu Utama</a>
                     </div>
                   </div>
                 </div>

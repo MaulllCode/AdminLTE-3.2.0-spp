@@ -63,8 +63,8 @@
                         <td><?php echo $row['nama_paket']; ?></td>
                         <td><?php echo $row['harga']; ?></td>
                         <td>
-                          <a href="index.php?page=ubah_paket&id_paket=<?= $row['id_paket']; ?>" class="btn btn-success" role="button" title="Ubah Data"><i class="fas fa-edit"></i></a>
-                          <a onclick="return confirm('Apakah yakin menghapus Data')" href="pages/paket/hapus_paket.php?id_paket=<?= $row['id_paket']; ?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="fas fa-trash"></i></a>
+                          <a href="index.php?page=ubah_paket&id_paket=<?= $row['id_paket']; ?>" class="btn btn-success" role="button" title="Ubah Data"><i class="fas fa-edit"></i> Ubah</a>
+                          <a onclick="return confirm('Apakah yakin menghapus Data')" href="index.php?page=hapus_paket&id_paket=<?= $row['id_paket']; ?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
                         </td>
                       </tr>
 

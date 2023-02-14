@@ -12,6 +12,9 @@ if (isset($_GET['page'])) {
     case 'ubah_user';
       include 'pages/user/ubah_user.php';
       break;
+    case 'hapus_user';
+      include 'pages/user/hapus_user.php';
+      break;
     case 'data_member':
       include 'pages/member/data_member.php';
       break;
@@ -20,6 +23,9 @@ if (isset($_GET['page'])) {
       break;
     case 'ubah_member';
       include 'pages/member/ubah_member.php';
+      break;
+    case 'hapus_member';
+      include 'pages/member/hapus_member.php';
       break;
     case 'data_outlet':
       include 'pages/outlet/data_outlet.php';
@@ -30,6 +36,9 @@ if (isset($_GET['page'])) {
     case 'ubah_outlet';
       include 'pages/outlet/ubah_outlet.php';
       break;
+    case 'hapus_outlet';
+      include 'pages/outlet/hapus_outlet.php';
+      break;
     case 'data_paket':
       include 'pages/paket/data_paket.php';
       break;
@@ -38,6 +47,9 @@ if (isset($_GET['page'])) {
       break;
     case 'ubah_paket';
       include 'pages/paket/ubah_paket.php';
+      break;
+    case 'hapus_paket';
+      include 'pages/paket/hapus_paket.php';
       break;
     case 'laporan':
       include 'pages/transaksi/laporan.php';

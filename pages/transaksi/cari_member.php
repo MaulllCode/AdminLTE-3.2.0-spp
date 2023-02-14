@@ -64,7 +64,7 @@
                         <td><?php echo $row['jenis_kelamin']; ?></td>
                         <td><?php echo $row['tlp']; ?></td>
                         <td>
-                          <a href="index.php?page=tambah_transaksi&id_member=<?= $row['id_member']; ?>" class="btn btn-primary" role="submit" title="Pilih Data">Pilih Data</a>
+                          <a href="index.php?page=tambah_transaksi&id_member=<?= $row['id_member']; ?>" class="btn btn-primary" role="submit" title="Pilih Data"><i class="fas fa-check"></i> Pilih Data</a>
                         </td>
                       </tr>
                   <?php }

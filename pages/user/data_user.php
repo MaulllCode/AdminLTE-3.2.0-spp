@@ -65,8 +65,8 @@
                         <td><?php echo $row['id_outlet']; ?></td>
                         <td><?php echo $row['role']; ?></td>
                         <td>
-                          <a href="index.php?page=ubah_user&id_user=<?= $row['id_user']; ?>" class="btn btn-success" role="button" title="Ubah Data"><i class="fas fa-edit"></i></a>
-                          <a onclick="return confirm('Apakah yakin menghapus Data')" href="pages/user/hapus_user.php?id_user=<?= $row['id_user']; ?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="fas fa-trash"></i></a>
+                          <a href="index.php?page=ubah_user&id_user=<?= $row['id_user']; ?>" class="btn btn-success" role="button" title="Ubah Data"><i class="fas fa-edit"></i> Ubah</a>
+                          <a onclick="return confirm('Apakah yakin menghapus Data')" href="index.php?page=hapus_user&id_user=<?= $row['id_user']; ?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
                         </td>
                       </tr>
 

@@ -32,8 +32,8 @@
         <div class="card-header col">
           <div class="box box-primary">
             <div class="box-header pb-3">
-              <a href="index.php?page=cari_member" class="btn btn-primary" role="button"><i class="fas fa-plus"></i></i> Tambah</a>
-              <a href="index.php?page=konfirmasi" class="btn btn-primary" role="button"><i class="fas fa-cart-shopping"></i></i>Konfirmasi Pembayaran</a>
+              <a href="index.php?page=cari_member" class="btn btn-primary" role="button"><i class="fas fa-plus"></i> Tambah</a>
+              <a href="index.php?page=konfirmasi" class="btn btn-primary" role="button"><i class="fas fa-check"></i> Konfirmasi Pembayaran</a>
               </a>
             </div>
             <div class="box-body table-responsive">
@@ -69,7 +69,7 @@
                           <td><?= $transaksi['dibayar'] ?></td>
                           <td><?= 'Rp ' . number_format($transaksi['harga']) ?></td>
                           <td>
-                            <a href="index.php?page=detail&id_transaksi=<?= $transaksi['id_transaksi']; ?>" class="btn btn-success" role="button" title="Detail Data">Detail Data</a>
+                            <a href="index.php?page=detail&id_transaksi=<?= $transaksi['id_transaksi']; ?>" class="btn btn-success" role="button" title="Detail Data"><i class="fa fa-search"></i> Detail Data</a>
                           </td>
                         </tr>
                     <?php }

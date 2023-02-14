@@ -64,7 +64,7 @@
                       <h3><strong>Total Pembayaran <?= 'Rp ' . number_format($data['harga']); ?></strong><br></h3>
                       <h3><strong>Total Uang Bayar <?= 'Rp ' . number_format($data['bayar']); ?></strong><br></h3>
                       <h3><strong>Kembalian <?= 'Rp ' . number_format($data['bayar'] - $data['harga']); ?></strong><br><br></h3>
-                      <a href="index.php?page=data_transaksi" class="btn btn-primary col-md-4 ml-auto mr-auto">Kembali Ke Menu Utama</a>
+                      <a href="index.php?page=data_transaksi" class="btn btn-primary col-md-4 ml-auto mr-auto"><i class="fas fa-home"></i> Kembali Ke Menu Utama</a>
                     </div>
                   </div>
                 </div>
