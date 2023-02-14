@@ -153,7 +153,7 @@
                 <?php if ($_SESSION["role"] !== "Owner") { ?>
                   <li class="nav-item">
                     <a href="index.php?page=data_member" class="nav-link">
-                      <i class="far fa-user nav-icon"></i>
+                      <i class="far fa-user-circle nav-icon"></i>
                       <p>Data member</p>
                     </a>
                   </li>
@@ -161,7 +161,7 @@
                 <?php if ($_SESSION["role"] == "Admin") { ?>
                   <li class="nav-item">
                     <a href="index.php?page=data_outlet" class="nav-link">
-                      <i class="fas fa-gift nav-icon"></i>
+                      <i class="fas fa-store nav-icon"></i>
                       <p>Data Outlet</p>
                     </a>
                   </li>

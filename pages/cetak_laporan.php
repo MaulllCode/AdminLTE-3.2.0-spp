@@ -39,7 +39,7 @@ setlocale(LC_TIME, 'id_ID.utf8');
           <td><?= $transaksi['nama'] ?></td>
           <td><?= $transaksi['status'] ?></td>
           <td><?= $transaksi['dibayar'] ?></td>
-          <td><?= $transaksi['harga'] ?></td>
+          <td><?= 'Rp ' . number_format($transaksi['harga']) ?></td>
         </tr>
       <?php
       }
