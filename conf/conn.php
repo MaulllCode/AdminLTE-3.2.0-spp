@@ -4,6 +4,6 @@
 $kon = mysqli_connect("localhost", "root", "", "crud-transaksi");
 
 if (!$kon) {
-    // jika error
-    die("Connection failed: " . mysqli_connect_error());
+  // jika error
+  die("Connection failed: " . mysqli_connect_error());
 }

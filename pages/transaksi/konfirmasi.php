@@ -63,7 +63,7 @@
                         <td><?= $rowe['nama'] ?></td>
                         <td><?= $rowe['status'] ?></td>
                         <td><?= $rowe['dibayar'] ?></td>
-                        <td><?= $rowe['harga'] ?></td>
+                        <td><?= 'Rp. ' . number_format($rowe['harga']) ?></td>
                         <td>
                           <a href="index.php?page=bayar&id_transaksi=<?= $rowe['id_transaksi']; ?>" class="btn btn-primary" role="submit" title="Pilih Data"><i class="fas fa-check"></i> Pilih Data</a>
                         </td>

@@ -25,7 +25,7 @@
     $diskon = $_POST['diskon'];
     $pajak = $_POST['pajak'];
 
-    $sql = "INSERT INTO tb_transaksi VALUES (NULL, '$id_outlet', '$kode_invoice', '$id_member', '$tgl',  '$batas_waktu', NULl, '$biaya_tambahan', '$diskon', '$pajak', 'Baru', 'Belum_dibayar', '$id_user')";
+    $sql = "INSERT INTO tb_transaksi VALUES (NULL, '$id_outlet', '$kode_invoice', '$id_member', '$tgl',  '$batas_waktu', NULL, '$biaya_tambahan', '$diskon', '$pajak', 'Baru', 'Belum_dibayar', '$id_user')";
 
     $result1 = mysqli_query($kon, $sql);
 

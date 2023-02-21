@@ -76,11 +76,11 @@
                   </div>
                   <div class="form-group">
                     <label for="largeInput">Total Yang Harus Dibayarkan</label>
-                    <input type="text" name="harga" class="form-control" value="<?= 'Rp ' . number_format($data['harga']); ?>" placeholder="TOTAL YANG HARUS DIBAYARKAN" readonly>
+                    <input type="text" name="harga" class="form-control" value="<?= 'Rp. ' . number_format($data['harga']); ?>" placeholder="TOTAL YANG HARUS DIBAYARKAN" readonly>
                   </div>
                   <div class="form-group">
                     <label for="largeInput">Masukan Jumlah Pembayaran</label>
-                    <input type="number" name="bayar" class="form-control" value="">
+                    <input type="number" name="bayar" class="form-control" placeholder="Rp. " value="">
                   </div>
                 </div>
                 <!-- /.box-body -->
