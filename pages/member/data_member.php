@@ -44,7 +44,13 @@
                     <th>ALAMAT</th>
                     <th>JENIS KELAMIN</th>
                     <th>NO TELEPON</th>
-                    <th>AKSI</th>
+                    <?php
+                    if ($_SESSION["role"] == "Admin") {
+                    ?>
+                      <th>AKSI</th>
+                    <?php
+                    }
+                    ?>
                   </tr>
                 </thead>
                 <tbody>
@@ -61,10 +67,16 @@
                       <td><?php echo $row['alamat']; ?></td>
                       <td><?php echo $row['jenis_kelamin']; ?></td>
                       <td><?php echo $row['tlp']; ?></td>
-                      <td>
-                        <a href="index.php?page=ubah_member&id_member=<?= $row['id_member']; ?>" class="btn btn-success" role="button" title="Ubah Data"><i class="fas fa-edit"></i> Ubah</a>
-                        <a onclick="return confirm('Apakah yakin menghapus Data')" href="index.php?page=hapus_member&id_member=<?= $row['id_member']; ?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
-                      </td>
+                      <?php
+                      if ($_SESSION["role"] == "Admin") {
+                      ?>
+                        <td>
+                          <a href="index.php?page=ubah_member&id_member=<?= $row['id_member']; ?>" class="btn btn-success" role="button" title="Ubah Data"><i class="fas fa-edit"></i> Ubah</a>
+                          <a onclick="return confirm('Apakah yakin menghapus Data')" href="index.php?page=hapus_member&id_member=<?= $row['id_member']; ?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
+                        </td>
+                      <?php
+                      }
+                      ?>
                     </tr>
                   <?php } ?>
                 </tbody>

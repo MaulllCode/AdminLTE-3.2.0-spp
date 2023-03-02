@@ -57,23 +57,23 @@
               <div class="box-body">
                 <div class="form-group">
                   <label>NAMA</label>
-                  <input type="text" name="nama" class="form-control" placeholder="NAMA" required>
+                  <input type="text" name="nama" class="form-control" placeholder="NAMA" required pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama lengkap dengan benar')" oninput="setCustomValidity('')">
                 </div>
                 <div class="form-group">
                   <label>ALAMAT</label>
-                  <input type="text" name="alamat" class="form-control" placeholder="ALAMAT" required>
+                  <input type="text" name="alamat" class="form-control" placeholder="ALAMAT" required pattern="[a-zA-Z0-9\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Alamat lengkap dengan benar')" oninput="setCustomValidity('')">
                 </div>
                 <div class="form-group">
                   <label>JENIS KELAMIN</label>
-                  <select class="form-control" name="jenis_kelamin">
-                    <option value="">- Pilihan Jenis Kelamin -</option>
+                  <select class="form-control" name="jenis_kelamin" required oninvalid="this.setCustomValidity('Pilih Jenis kelamin dengan benar')" oninput="setCustomValidity('')">
+                    <option value="">- PILIHAN JENIS KELAMIN -</option>
                     <option value="L">Laki-laki</option>
                     <option value="P">Perempuan</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label>NO TELEPON</label>
-                  <input type="text" name="tlp" class="form-control" placeholder="NO TELEPON" required>
+                  <input type="tel" pattern="\d{11,13}" name="tlp" class="form-control" placeholder="NO TELEPON" required oninvalid="this.setCustomValidity('Masukan No telp dengan benar')" oninput="setCustomValidity('')">
                 </div>
               </div>
               <!-- /.box-body -->

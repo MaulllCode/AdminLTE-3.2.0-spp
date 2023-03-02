@@ -74,7 +74,12 @@
                           <td><?= 'Rp. ' . number_format($transaksi['harga']) ?></td>
                           <td>
                             <a href="index.php?page=detail&id_transaksi=<?= $transaksi['id_transaksi']; ?>" class="btn btn-success" role="button" title="Detail Data"><i class="fa fa-search"></i> Detail Data</a>
-                            <a onclick="return confirm('Apakah yakin menghapus Data')" href="index.php?page=hapus_transaksi&id_transaksi=<?= $transaksi['id_transaksi']; ?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
+                            <?php
+                            if ($_SESSION["role"] == "Admin") {
+                            ?>
+                              <a onclick="return confirm('Apakah yakin menghapus Data')" href="index.php?page=hapus_transaksi&id_transaksi=<?= $transaksi['id_transaksi']; ?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
+                            <?php }
+                            ?>
                           </td>
                         </tr>
                     <?php }

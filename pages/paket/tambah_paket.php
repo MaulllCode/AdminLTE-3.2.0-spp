@@ -59,7 +59,8 @@
               <div class="box-body">
                 <div class="form-group">
                   <label>ID OUTLET</label>
-                  <select name="id_outlet" class="form-control form-control" placeholder="ID OUTLET" required>
+                  <select name="id_outlet" class="form-control form-control" placeholder="ID OUTLET" required oninvalid="this.setCustomValidity('Pilih Outlet dengan benar')" oninput="setCustomValidity('')">
+                    <option value="">- PILIHAN OUTLET -</option>
                     <?php
                     $query = "SELECT * FROM tb_outlet";
                     $data = mysqli_query($kon, $query);
@@ -70,8 +71,8 @@
                 </div>
                 <div class="form-group">
                   <label>JENIS CUCIAN</label>
-                  <select class="form-control" name="jenis">
-                    <option value="">- Pilihan Jenis Cucian -</option>
+                  <select class="form-control" name="jenis" required oninvalid="this.setCustomValidity('Pilih Jenis Cucian dengan benar')" oninput="setCustomValidity('')">
+                    <option value="">- PILIHAN JENIS CUCIAN -</option>
                     <option value="Kiloan">Kiloan</option>
                     <option value="Selimut">Selimut</option>
                     <option value="Bed_cover">Bed Cover</option>
@@ -81,11 +82,11 @@
                 </div>
                 <div class="form-group">
                   <label>NAMA PAKET</label>
-                  <input type="text" name="nama_paket" class="form-control" placeholder="NAMA PAKET" required>
+                  <input type="text" name="nama_paket" class="form-control" placeholder="NAMA PAKET" required oninvalid="this.setCustomValidity('Masukan Nama Paket dengan benar')" oninput="setCustomValidity('')">
                 </div>
                 <div class="form-group">
                   <label>HARGA</label>
-                  <input type="NUMBER" name="harga" class="form-control" placeholder="HARGA" required>
+                  <input type="NUMBER" name="harga" class="form-control" placeholder="HARGA" required oninvalid="this.setCustomValidity('Masukan Harga dengan benar')" oninput="setCustomValidity('')">
                 </div>
               </div>
               <!-- /.box-body -->

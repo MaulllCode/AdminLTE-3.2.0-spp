@@ -66,6 +66,9 @@ if (isset($_GET['page'])) {
     case 'tambah_transaksi':
       include 'pages/transaksi/tambah_transaksi.php';
       break;
+    case 'tambah_transaksi2':
+      include 'pages/transaksi/tambah_transaksi2.php';
+      break;
     case 'transaksi_sukses':
       include 'pages/transaksi/transaksi_sukses.php';
       break;
@@ -81,8 +84,14 @@ if (isset($_GET['page'])) {
     case 'detail';
       include 'pages/transaksi/detail.php';
       break;
+    case 'keranjang';
+      include 'pages/transaksi/keranjang.php';
+      break;
     case 'cetak_laporan';
       include 'pages/cetak_laporan.php';
+      break;
+    default:
+      echo "<center><h3>Halaman tidak di temukan !</h3></center>";
       break;
   }
 } else {

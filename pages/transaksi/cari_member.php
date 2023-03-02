@@ -48,7 +48,6 @@
                   </tr>
                 </thead>
                 <tbody>
-
                   <?php
                   include "conf/conn.php";
                   $no = 1;
@@ -64,7 +63,8 @@
                         <td><?php echo $row['jenis_kelamin']; ?></td>
                         <td><?php echo $row['tlp']; ?></td>
                         <td>
-                          <a href="index.php?page=tambah_transaksi&id_member=<?= $row['id_member']; ?>" class="btn btn-primary" role="submit" title="Pilih Data"><i class="fas fa-check"></i> Pilih Data</a>
+                          <a href="index.php?page=tambah_transaksi&id_member=<?= $row['id_member']; ?>" class="btn btn-primary" role="submit" title="Pilih Data"><i class="fas fa-check"></i> Pilih Data 1</a>
+                          <a href="index.php?page=tambah_transaksi2&id_member=<?= $row['id_member']; ?>" class="btn btn-primary" role="submit" title="Pilih Data"><i class="fas fa-check"></i> Pilih Data 2</a>
                         </td>
                       </tr>
                   <?php }

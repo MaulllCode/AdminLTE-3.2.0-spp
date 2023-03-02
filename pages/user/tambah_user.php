@@ -61,19 +61,19 @@
               <div class="box-body">
                 <div class="form-group has-feedback">
                   <label>NAMA</label>
-                  <input type="text" class="form-control" name="nama" placeholder="Nama">
+                  <input type="text" class="form-control" name="nama" placeholder="NAMA" required pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama dengan benar')" oninput="setCustomValidity('')">
                 </div>
                 <div class="form-group has-feedback">
                   <label>USERNAME</label>
-                  <input type="text" class="form-control" name="username" placeholder="Username" required>
+                  <input type="text" class="form-control" name="username" placeholder="USERNAME" required pattern="[a-zA-Z0-9\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Username dengan benar')" oninput="setCustomValidity('')">
                 </div>
                 <div class="form-group has-feedback">
                   <label>PASSWORD</label>
-                  <input type="text" class="form-control" name="password" placeholder="Password" required>
+                  <input type="text" class="form-control" name="password" placeholder="PASSWORD" required pattern="[a-zA-Z0-9\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Username dengan benar')" oninput="setCustomValidity('')">
                 </div>
                 <div class="form-group">
                   <label>ID OUTLET</label>
-                  <select name="id_outlet" class="form-control form-control" placeholder="ID OUTLET" required>
+                  <select name="id_outlet" class="form-control form-control" placeholder="ID OUTLET" required oninvalid="this.setCustomValidity('Pilih Outlet dengan benar')" oninput="setCustomValidity('')">
                     <?php
                     $query = "SELECT * FROM tb_outlet";
                     $data = mysqli_query($kon, $query);
@@ -84,8 +84,8 @@
                 </div>
                 <div class="form-group has-feedback">
                   <label>ROLE</label>
-                  <select class="form-control" id="" name="role" placeholder="Masukan Role" required>
-                    <option value="">Pilihan Role</option>
+                  <select class="form-control" id="" name="role" placeholder="PILIHAN ROLE" required oninvalid="this.setCustomValidity('Pilih Role dengan benar')" oninput="setCustomValidity('')">
+                    <option value="">-- PILIHAN ROLE --</option>
                     <option value="Admin">Admin</option>
                     <option value="Kasir">Kasir</option>
                     <option value="Owner">Owner</option>

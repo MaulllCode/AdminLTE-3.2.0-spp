@@ -2,13 +2,13 @@
   <?php
   // <!-- proses -->
   if (isset($_POST['ubah'])) {
-    $id = $_POST['id_paket'];
+    $id_paket = $_POST['id_paket'];
     $id_outlet = $_POST['id_outlet'];
     $jenis = $_POST['jenis'];
     $nama_paket = $_POST['nama_paket'];
     $harga = $_POST['harga'];
 
-    $sql = "UPDATE tb_paket SET id_outlet='$id_outlet', jenis='$jenis', nama_paket='$nama_paket', harga='$harga' WHERE id_paket ='$id'";
+    $sql = "UPDATE tb_paket SET id_outlet='$id_outlet', jenis='$jenis', nama_paket='$nama_paket', harga='$harga' WHERE id_paket ='$id_paket'";
 
     $result = mysqli_query($kon, $sql);
 
@@ -62,7 +62,7 @@
                 <input type="hidden" name="id_paket" value="<?php echo $row['id_paket']; ?>">
                 <div class="form-group">
                   <label>ID OUTLET</label>
-                  <select name="id_outlet" class="form-control form-control" placeholder="ID OUTLET" required>
+                  <select name="id_outlet" class="form-control" placeholder="ID OUTLET" required>
                     <?php
                     $query = "SELECT * FROM tb_outlet";
                     $data = mysqli_query($kon, $query);
@@ -73,10 +73,9 @@
                 </div>
                 <div class="form-group">
                   <label>JENIS CUCIAN</label>
-                  <select class="form-control" name="jenis" required>
-                    <option value="<?php echo $row['jenis']; ?>">-- Pilihan Jenis Cucian --</option>
+                  <select class="form-control" name="jenis" required value="<?php echo $row['jenis']; ?>">
                     <?php
-                    $array_jenis = array('Kiloan', 'Selimut', 'Bed_cover', 'Kaos', 'Lain');
+                    $array_jenis = array('kiloan', 'selimut', 'bed_cover', 'kaos', 'lain');
                     foreach ($array_jenis as $jenis) {
                       if ($row['jenis'] == $jenis) {
                         echo "<option value='$jenis' selected>$jenis</option>";

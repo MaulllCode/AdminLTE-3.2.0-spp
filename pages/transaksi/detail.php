@@ -101,6 +101,10 @@
                     <label for="largeInput">Tanggal Dibayar</label>
                     <input type="text" name="biaya_tambahan" class="form-control form-control" value="<?= $data['tgl_bayar']; ?>" readonly>
                   </div>
+                  <div class="form-group">
+                    <label for="largeInput">Total Kembalian</label>
+                    <input type="text" name="biaya_tambahan" class="form-control form-control" value="<?= $data['bayar'] - $data['harga']; ?>" readonly>
+                  </div>
                 <?php else : ?>
                   <div class="form-group">
                     <label for="largeInput">Total Bayar</label>
@@ -112,11 +116,11 @@
                   </div>
                 <?php endif; ?>
                 <div class="form-group">
-                  <label for="">Status Transaksi</label>
+                  <label for="">Status Cucian</label>
                   <select name="status" class="form-control form-control" id="defaultSelect">
                     <?php foreach ($status as $key) : ?>
                       <?php if ($key == $data['status']) : ?>
-                        <option value="<?= $key ?>" selected><?= $key ?></option>
+                        <option value="<?= $key ?>" selected><?= $key ?>Pilih Status Cucian</option>
                       <?php endif ?>
                       <option value="<?= $key ?>"><?= $key ?></option>
                     <?php endforeach ?>

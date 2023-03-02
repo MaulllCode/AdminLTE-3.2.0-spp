@@ -55,15 +55,15 @@
               <div class="box-body">
                 <div class="form-group">
                   <label>NAMA</label>
-                  <input type="text" name="nama" class="form-control" placeholder="NAMA" required>
+                  <input type="text" name="nama" class="form-control" placeholder="NAMA" required pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama lengkap dengan benar')" oninput="setCustomValidity('')">
                 </div>
                 <div class="form-group">
                   <label>ALAMAT</label>
-                  <input type="text" name="alamat" class="form-control" placeholder="ALAMAT" required>
+                  <input type="text" name="alamat" class="form-control" placeholder="ALAMAT" required pattern="[a-zA-Z0-9\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Alamat lengkap dengan benar')" oninput="setCustomValidity('')">
                 </div>
                 <div class="form-group">
                   <label>NO TELEPON</label>
-                  <input type="text" name="tlp" class="form-control" placeholder="NO TELEPON" required>
+                  <input type="tel" name="tlp" class="form-control" placeholder="NO TELEPON" required pattern="\d{11,13}" oninvalid="this.setCustomValidity('Masukan No telp dengan benar')" oninput="setCustomValidity('')">
                 </div>
               </div>
               <!-- /.box-body -->

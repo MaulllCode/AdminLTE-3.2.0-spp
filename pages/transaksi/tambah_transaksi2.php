@@ -107,36 +107,35 @@
                   <input type="text" name="kode_invoice" value="<?= $kode; ?>" readonly class="form-control" placeholder="KODE INVOICE" required>
                 </div>
                 <div class="form-group">
-                  <label>NAMA MEMBER</label>
+                  <label>ID MEMBER</label>
                   <input type="text" name="" readonly class="form-control" value="<?= $member['nama']; ?>" placeholder="ID MEMBER" required>
                 </div>
                 <div class="form-group">
-                  <label>PILIHAN PAKET</label>
-                  <div class="row">
+                  <label>PILIH PAKET</label>
+                  <select name="id_paket" class="form-control" required>
+                    <option value="">-- PILIH PAKET --</option>
                     <?php
                     while ($key = mysqli_fetch_array($paket)) {
                     ?>
-                      <div class="card col-sm-2 mx-3">
-                        <h3><?= $key['jenis'];  ?></h3>
-                        <h4>Rp. <?php echo number_format($key['harga']); ?> </h4>
-                        <p><a href="index.php?page=keranjang&id_member=<?= $id_member; ?>&jenis=<?php echo $key['jenis']; ?>&aksi=tambah_produk&qty=1" class="btn btn-primary" role="button">Masukan Keranjang</a></p>
-                      </div>
-                    <?php
-                    }
-                    ?>
-                  </div>
+                      <option value="<?= $key['id_paket'] ?>"><?= $key['jenis'];  ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>JUMLAH</label>
+                  <input type="number" name="qty" class="form-control" placeholder="JUMLAH" required>
                 </div>
                 <div class="form-group">
                   <label>BIAYA TAMBAHAN</label>
-                  <input type="number" name="biaya_tambahan" value="0" readonly class="form-control" placeholder="BIAYA TAMBAHAN" required>
+                  <input type="number" name="biaya_tambahan" value="0" class="form-control" placeholder="BIAYA TAMBAHAN" required>
                 </div>
                 <div class="form-group">
                   <label>DISKON (%)</label>
-                  <input type="number" name="diskon" value="0" readonly class="form-control" placeholder="DISKON" required>
+                  <input type="number" name="diskon" value="0" class="form-control" placeholder="DISKON" required>
                 </div>
                 <div class="form-group">
                   <label>PAJAK (%)</label>
-                  <input type="number" value="0" name="pajak" readonly class="form-control" placeholder="PAJAK" required>
+                  <input type="number" value="0" name="pajak" class="form-control" placeholder="PAJAK" required>
                 </div>
               </div>
               <!-- /.box-body -->

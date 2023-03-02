@@ -67,16 +67,16 @@
                 <input type="hidden" name="id_member" value="<?php echo $row['id_member']; ?>">
                 <div class="form-group">
                   <label>NAMA</label>
-                  <input type="text" name="nama" class="form-control" placeholder="NAMA" required value="<?php echo $row['nama']; ?>">
+                  <input type="text" name="nama" class="form-control" placeholder="NAMA" required pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama lengkap dengan benar')" oninput="setCustomValidity('')" value="<?php echo $row['nama']; ?>">
                 </div>
                 <div class="form-group">
                   <label>ALAMAT</label>
-                  <input type="text" name="alamat" class="form-control" placeholder="ALAMAT" required value="<?php echo $row['alamat']; ?>">
+                  <input type="text" name="alamat" class="form-control" placeholder="ALAMAT" required pattern="[a-zA-Z0-9\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Alamat lengkap dengan benar')" oninput="setCustomValidity('')" value="<?php echo $row['alamat']; ?>">
                 </div>
                 <div class="form-group">
                   <label>JENIS KELAMIN</label>
-                  <select class="form-control" name="jenis_kelamin">
-                    <option value="<?php echo $row['jenis_kelamin']; ?>">-- Pilihan role --</option>
+                  <select class="form-control" name="jenis_kelamin" required oninvalid="this.setCustomValidity('Pilih Jenis kelamin dengan benar')" oninput="setCustomValidity('')">
+                    <option value="<?php echo $row['jenis_kelamin']; ?>">-- PILIHAN JENIS KELAMIN --</option>
                     <?php
                     $array_jenis_kelamin = array('L', 'P');
                     foreach ($array_jenis_kelamin as $jenis_kelamin) {
@@ -91,7 +91,7 @@
                 </div>
                 <div class="form-group">
                   <label>NO TELEPON</label>
-                  <input type="text" name="tlp" class="form-control" placeholder="NO TELEPON" required value="<?php echo $row['tlp']; ?>">
+                  <input type="tel" name="tlp" pattern="\d{11,13}" class="form-control" placeholder="NO TELEPON" required oninvalid="this.setCustomValidity('Masukan No telp dengan benar')" oninput="setCustomValidity('')" value="<?php echo $row['tlp']; ?>">
                 </div>
               </div>
               <!-- /.box-body -->

@@ -1,0 +1,51 @@
+1. Sebutkan contoh struktur data statis dan dinamis!
+- Struktur Data Statis : yaitu struktur yang tidak berubah, seperti array/larik, record, himpunan.
+- Struktur Data Dinamik :yaitu struktur yang berubah, seperti list/senerai, queue/antrian/giliran, tumpukan/stack/timbunan
+2. Jelaskan Empat komponen dasar pembentuk user interface!
+- Tata letak – penempatan elemen UI yang digunakan
+- Warna – warna dari desain antar muka secara umum
+- Tipografi – kombinasi huruf yang digunakan di user interface
+- Grafik – ikon yang digunakan sebagai ilustrasi penggunaan sistem
+3. Tulislah logika pemrograman dengan menggunakan flowchart untuk menentukan luas segitiga!
+
+4. Output dari program dibawah ini (Nilai anda: 88 dengan Grade A)
+<?php
+$nilai = 88;
+if ($nilai > 90) {
+  $grade = "A+";
+} elseif ($nilai > 80) {
+  $grade = "A";
+} elseif ($nilai > 70) {
+  $grade = "B+";
+} elseif ($nilai > 60) {
+  $grade = "B";
+} elseif ($nilai > 50) {
+  $grade = "C+";
+} elseif ($nilai > 40) {
+  $grade = "C";
+} elseif ($nilai > 30) {
+  $grade = "D";
+} elseif ($nilai > 20) {
+  $grade = "E";
+} else {
+  $grade = "F";
+}
+echo "Nilai anda: $nilai dengan Grade $grade";
+?>
+
+5. Tuliskan kode program yang tepat untuk
+<?php
+function luas1 ($panjang, $lebar) {
+  echo "Luas Persegi 1 = " $panjang * $lebar;
+}
+
+function luas2 ($panjang, $lebar) {
+  echo "Luas Persegi 2 = " $panjang * $lebar;
+}
+
+$hasil = luas1(10,5);
+echo "Luas Persegi 1 = " . .....;
+echo "<br>;
+
+luas2(10,5);
+?>
