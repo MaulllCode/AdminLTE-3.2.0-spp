@@ -40,7 +40,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="index.php?page=data_outlet">Home</a></li>
             <li class="breadcrumb-item active">Ubah Outlet</li>
           </ol>
         </div>
@@ -62,7 +62,7 @@
                 <input type="hidden" name="id_outlet" value="<?php echo $row['id_outlet']; ?>">
                 <div class="form-group">
                   <label>NAMA</label>
-                  <input type="text" name="nama" class="form-control" placeholder="NAMA" required pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama lengkap dengan benar')" oninput="setCustomValidity('')" value="<?php echo $row['nama']; ?>">
+                  <input type="text" name="nama" class="form-control" placeholder="NAMA" required pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama Outlet dengan benar')" oninput="setCustomValidity('')" value="<?php echo $row['nama']; ?>">
                 </div>
                 <div class="form-group">
                   <label>ALAMAT</label>

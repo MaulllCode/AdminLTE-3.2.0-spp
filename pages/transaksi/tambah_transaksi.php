@@ -1,6 +1,5 @@
 <div>
   <?php
-
   $tgl = date('Y-m-d h:i:s');
   $seminggu = mktime(0, 0, 0, date("n"), date("j") + 7, date("Y"));
   $batas_waktu = date("Y-m-d h:i:s", $seminggu);
@@ -9,6 +8,7 @@
   $id_outlet = $_SESSION['id_outlet'];
   $id_user   = $_SESSION['id_user'];
   $id_member = $_GET['id_member'];
+  $_SESSION['id_member'] = $id_member;
 
   $outletq = mysqli_query($kon, "SELECT nama from tb_outlet WHERE id_outlet = " . $id_outlet);
   $outlet = mysqli_fetch_assoc($outletq);
@@ -79,7 +79,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="index.php?page=data_transaksi">Home</a></li>
             <li class="breadcrumb-item active">Tambah Transaksi</li>
           </ol>
         </div>

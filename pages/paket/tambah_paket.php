@@ -38,7 +38,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="index.php?page=data_paket">Home</a></li>
             <li class="breadcrumb-item active">Tambah Paket</li>
           </ol>
         </div>
@@ -70,9 +70,9 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label>JENIS CUCIAN</label>
-                  <select class="form-control" name="jenis" required oninvalid="this.setCustomValidity('Pilih Jenis Cucian dengan benar')" oninput="setCustomValidity('')">
-                    <option value="">- PILIHAN JENIS CUCIAN -</option>
+                  <label>JENIS PAKET</label>
+                  <select class="form-control" name="jenis" required oninvalid="this.setCustomValidity('Pilih Jenis Paket dengan benar')" oninput="setCustomValidity('')">
+                    <option value="">- PILIHAN JENIS PAKET -</option>
                     <option value="Kiloan">Kiloan</option>
                     <option value="Selimut">Selimut</option>
                     <option value="Bed_cover">Bed Cover</option>

@@ -39,7 +39,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="index.php?page=data_paket">Home</a></li>
             <li class="breadcrumb-item active">Ubah Paket</li>
           </ol>
         </div>
@@ -61,21 +61,23 @@
               <div class="box-body">
                 <input type="hidden" name="id_paket" value="<?php echo $row['id_paket']; ?>">
                 <div class="form-group">
-                  <label>ID OUTLET</label>
+                  <label>NAMA OUTLET</label>
                   <select name="id_outlet" class="form-control" placeholder="ID OUTLET" required>
+                    <option value="<?php echo $row['jenis']; ?>">-- PILIHAN OUTLET --</option>
                     <?php
                     $query = "SELECT * FROM tb_outlet";
                     $data = mysqli_query($kon, $query);
                     while ($key = mysqli_fetch_array($data)) { ?>
-                      <option value="<?= $key['id_outlet']; ?>"><?= $key['nama']; ?></option>
+                      <option value="<?= $key['id_outlet']; ?>" selected><?= $key['nama']; ?></option>
                     <?php } ?>
                   </select>
                 </div>
                 <div class="form-group">
-                  <label>JENIS CUCIAN</label>
+                  <label>JENIS PAKET</label>
                   <select class="form-control" name="jenis" required value="<?php echo $row['jenis']; ?>">
+                    <option value="<?php echo $row['jenis']; ?>">-- PILIHAN JENIS PAKET --</option>
                     <?php
-                    $array_jenis = array('kiloan', 'selimut', 'bed_cover', 'kaos', 'lain');
+                    $array_jenis = array('Kiloan', 'Selimut', 'Bed_cover', 'Kaos', 'Lain');
                     foreach ($array_jenis as $jenis) {
                       if ($row['jenis'] == $jenis) {
                         echo "<option value='$jenis' selected>$jenis</option>";

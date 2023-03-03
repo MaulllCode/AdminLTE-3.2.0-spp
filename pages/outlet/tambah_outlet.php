@@ -34,7 +34,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="index.php?page=data_outlet">Home</a></li>
             <li class="breadcrumb-item active">Tambah Outlet</li>
           </ol>
         </div>
@@ -55,7 +55,7 @@
               <div class="box-body">
                 <div class="form-group">
                   <label>NAMA</label>
-                  <input type="text" name="nama" class="form-control" placeholder="NAMA" required pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama lengkap dengan benar')" oninput="setCustomValidity('')">
+                  <input type="text" name="nama" class="form-control" placeholder="NAMA" required pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama Outlet dengan benar')" oninput="setCustomValidity('')">
                 </div>
                 <div class="form-group">
                   <label>ALAMAT</label>

@@ -59,7 +59,7 @@ switch ($aksi) {
     break;
 
   case "update":
-    $id_member = $_GET['id_member'];
+    echo "anda pilih update jumlah=$qty";
     $itemArray = array($jenis => array('jenis' => $jenis, 'qty' => $qty, 'harga' => $harga));
     if (!empty($_SESSION["keranjang"])) {
       foreach ($_SESSION["keranjang"] as $k => $v) {
@@ -82,7 +82,7 @@ switch ($aksi) {
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="index.php?page=data_transaksi">Home</a></li>
             <li class="breadcrumb-item active">Keranjang Belanja</li>
           </ol>
         </div>
@@ -100,7 +100,7 @@ switch ($aksi) {
             <!-- /.box-header -->
             <div class="box-header pb-3 row">
               <div class="col">
-                <a href="index.php?page=tambah_transaksi&id_member=<?= $id_member ?>" class="btn btn-primary" role="button"><i class="fas fa-plus"></i> Tambah Paket</a>
+                <a href="index.php?page=tambah_transaksi&id_member=<?= $_SESSION['id_member']; ?>" class="btn btn-primary" role="button"><i class="fas fa-plus"></i> Tambah Paket</a>
               </div>
               <div class="col-sm-3 justify-content-end">
                 <a href="index.php?page=transaksi_sukses&id_member=<?= $id_member ?>" class="btn btn-primary col" role="button"><i class="fas fa-shopping-cart"></i> Buat Pesanan</a>
@@ -156,8 +156,9 @@ switch ($aksi) {
                           <input type="hidden" name="jenis" value="<?= $item['jenis']; ?>" class="form-control">
                           <input type="hidden" name="aksi" value="update" class="form-control">
                           <input type="hidden" name="qty" value="<?= $item['qty']; ?>" id="qtya<?= $no; ?>" value="qty[]" class="form-control">
-                          <button type="submit" class="btn btn-warning"><i class="fas fa-pen"></i> Update</button>
-                          <a href="index.php?page=keranjang&id_member=<?= $id_member ?>&jenis=<?= $item['jenis']; ?>&aksi=hapus" class="btn btn-danger" role="button"><i class="fas fa-trash"></i> Delete</a>
+                          <button type="submit" class="btn btn-warning"><i class="fas fa-pen"></i> Updates</button>
+
+                          <a href="index.php?page=keranjang&jenis=<?= $item['jenis']; ?>&aksi=hapus" class="btn btn-danger" role="button"><i class="fas fa-trash"></i> Delete</a>
                         </form>
                       </td>
                     </tr>
@@ -167,7 +168,8 @@ switch ($aksi) {
                 ?>
               </tbody>
             </table>
-            <h3>Total Pembayaran Rp. <?= number_format($total, 0, ',', '.'); ?> </h3>
+            <h3>Total Pembayaran Rp. <?= number_format($total, 0, ',', '.');
+                                      echo "jumlah=$qty"; ?> </h3>
           </div>
           <!-- /.box -->
         </div>

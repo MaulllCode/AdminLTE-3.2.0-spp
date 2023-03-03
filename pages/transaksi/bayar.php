@@ -16,7 +16,7 @@
 
       $insert = mysqli_query($kon, $query = "UPDATE tb_transaksi SET tgl_bayar = '$tgl_bayar', dibayar = 'Dibayar' WHERE id_transaksi = " . $_GET['id_transaksi']);
 
-      $insert2 = mysqli_query($kon, $query2 = "UPDATE tb_detail_transaksi SET bayar = '$bayar' WHERE id_transaksi = " . $_GET['id_transaksi']);
+      $insert2 = mysqli_query($kon, $query2 = "UPDATE tb_detail_transaksi SET bayar = '$bayar', keterangan = 'dibayar' WHERE id_transaksi = " . $_GET['id_transaksi']);
 
       if ($insert == 1 && $insert2 == 1) {
         echo '<script>window.location.href="index.php?page=transaksi_dibayar&id_transaksi=' . $_GET['id_transaksi'], '"</script>';
@@ -48,7 +48,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="index.php?page=data_transaksi">Home</a></li>
             <li class="breadcrumb-item active">Bayar Transaksi</li>
           </ol>
         </div><!-- /.row -->
@@ -80,7 +80,7 @@
                   </div>
                   <div class="form-group">
                     <label for="largeInput">Masukan Jumlah Pembayaran</label>
-                    <input type="number" name="bayar" class="form-control" placeholder="Rp. " value="">
+                    <input type="number" name="bayar" class="form-control" placeholder="Rp. " value="" required>
                   </div>
                 </div>
                 <!-- /.box-body -->

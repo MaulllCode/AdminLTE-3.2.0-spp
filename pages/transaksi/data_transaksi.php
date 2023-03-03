@@ -48,7 +48,7 @@
                       <th>NO</th>
                       <th>KODE INVOICE</th>
                       <th>MEMBER</th>
-                      <th>STATUS CUCIAN</th>
+                      <th>STATUS PAKET</th>
                       <th>STATUS PEMBAYARAN</th>
                       <th>TOTAL HARGA</th>
                       <th>AKSI</th>

@@ -18,7 +18,7 @@
       <div class="row">
         <div class="col-lg-4 col-6">
           <!-- small box -->
-          <div class="small-box bg-info">
+          <div class="small-box bg-primary">
             <div class="inner">
               <?php
               include "conf/conn.php";
@@ -77,8 +77,66 @@
           </div>
         </div>
         <!-- ./col -->
+        <?php if ($_SESSION["role"] !== "Owner") { ?>
+          <div class="col-lg-4 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <?php
+                include "conf/conn.php";
+                $query = mysqli_query($kon, "SELECT * FROM tb_transaksi where dibayar = 'Dibayar'");
+                $row = mysqli_num_rows($query);
+                ?>
+                <h3><?php echo $row; ?></h3>
 
-        <!-- ./col -->
+                <p>Jumlah Transaksi yang telah dibayar</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-4 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <?php
+                include "conf/conn.php";
+                $query = mysqli_query($kon, "SELECT * FROM tb_transaksi where dibayar = 'Belum_dibayar'");
+                $row = mysqli_num_rows($query);
+                ?>
+                <h3><?php echo $row; ?></h3>
+
+                <p>Jumlah Transaksi yang belum dibayar</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-lg-4 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <?php
+                include "conf/conn.php";
+                $query = mysqli_query($kon, "SELECT SUM(harga) FROM tb_detail_transaksi where keterangan = 'dibayar'");
+                $row = mysqli_fetch_column($query);
+                ?>
+                <h3><?php echo $row; ?></h3>
+
+                <p>Jumlah total penghasilan Transaksi</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-arrow-graph-up-right"></i>
+              </div>
+
+            </div>
+          </div>
+        <?php } ?>
       </div>
       <!-- /.row -->
     </div><!-- /.container-fluid -->

@@ -41,7 +41,7 @@
                     <tr>
                       <th>NO</th>
                       <th>ID OUTLET</th>
-                      <th>JENIS CUCIAN</th>
+                      <th>JENIS PAKET</th>
                       <th>NAMA PAKET</th>
                       <th>HARGA</th>
                       <th>AKSI</th>

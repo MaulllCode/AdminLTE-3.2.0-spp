@@ -19,7 +19,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="index.php?page=data_transaksi">Home</a></li>
             <li class="breadcrumb-item active">Data Member</li>
           </ol>
         </div>

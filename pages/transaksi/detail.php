@@ -3,13 +3,6 @@
 
   require "conf/conn.php";
 
-  $status = [
-    'baru',
-    'proses',
-    'selesai',
-    'diambil'
-  ];
-
   $id_transaksi = $_GET['id_transaksi'];
 
   // ambil data
@@ -23,7 +16,7 @@
     $query = "UPDATE tb_transaksi SET status = '$status' WHERE id_transaksi = '$id_transaksi'";
     $update = mysqli_query($kon, $query);
     if ($update == 1) {
-      echo '<script>alert("Status Cucian Berhasil diubah"); window.location.href="index.php?page=data_transaksi"</script>';
+      echo '<script>alert("Status Paket Berhasil diubah"); window.location.href="index.php?page=data_transaksi"</script>';
     } else {
       die("Connection failed: " . mysqli_connect_error());
     }
@@ -49,7 +42,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="index.php?page=data_transaksi">Home</a></li>
             <li class="breadcrumb-item active">Detail Transaksi</li>
           </ol>
         </div>
@@ -81,7 +74,7 @@
                   <input type="text" name="" readonly class="form-control" value="<?= $data['id_member']; ?>" placeholder="ID MEMBER" required>
                 </div>
                 <div class="form-group">
-                  <label>Paket cucian</label>
+                  <label>Paket PAKET</label>
                   <input type="text" name="" readonly class="form-control" value="<?= $data['jenis']; ?>" placeholder="ID MEMBER" required>
                 </div>
                 <div class="form-group">
@@ -89,41 +82,46 @@
                   <input type="text" name="qty" readonly class="form-control" placeholder="JUMLAH" required value="<?= $data['qty']; ?>">
                 </div>
                 <div class="form-group">
-                  <label for="largeInput">Total Harga</label>
+                  <label for="largeInput">TOTAL HARGA</label>
                   <input type="text" name="biaya_tambahan" class="form-control form-control" value="<?= $data['harga']; ?>" readonly>
                 </div>
                 <?php if ($data['bayar'] > 0) : ?>
                   <div class="form-group">
-                    <label for="largeInput">Total Bayar</label>
+                    <label for="largeInput">TOTAL BAYAR</label>
                     <input type="text" name="biaya_tambahan" class="form-control form-control" value="<?= $data['bayar']; ?>" readonly>
                   </div>
                   <div class="form-group">
-                    <label for="largeInput">Tanggal Dibayar</label>
+                    <label for="largeInput">TANGGAL DIBAYAR</label>
                     <input type="text" name="biaya_tambahan" class="form-control form-control" value="<?= $data['tgl_bayar']; ?>" readonly>
                   </div>
                   <div class="form-group">
-                    <label for="largeInput">Total Kembalian</label>
+                    <label for="largeInput">TOTAL KEMBALIAN</label>
                     <input type="text" name="biaya_tambahan" class="form-control form-control" value="<?= $data['bayar'] - $data['harga']; ?>" readonly>
                   </div>
                 <?php else : ?>
                   <div class="form-group">
-                    <label for="largeInput">Total Bayar</label>
+                    <label for="largeInput">TOTAL BAYAR</label>
                     <input type="text" name="biaya_tambahan" class="form-control form-control" value="Belum Melakukan Pembayaran" readonly>
                   </div>
                   <div class="form-group">
-                    <label for="largeInput">Batas Waktu Pembayaran</label>
+                    <label for="largeInput">BATAS WAKTU PEMBAYARAN</label>
                     <input type="text" name="biaya_tambahan" class="form-control form-control" value="<?= $data['batas_waktu']; ?>" readonly>
                   </div>
                 <?php endif; ?>
                 <div class="form-group">
-                  <label for="">Status Cucian</label>
+                  <label for="">STATUS PAKET</label>
                   <select name="status" class="form-control form-control" id="defaultSelect">
-                    <?php foreach ($status as $key) : ?>
-                      <?php if ($key == $data['status']) : ?>
-                        <option value="<?= $key ?>" selected><?= $key ?>Pilih Status Cucian</option>
-                      <?php endif ?>
-                      <option value="<?= $key ?>"><?= $key ?></option>
-                    <?php endforeach ?>
+                    <option value="<?php echo $data['status']; ?>">-- PILIHAN STATUS PAKET --</option>
+                    <?php
+                    $status_array = array('Baru', 'Proses', 'Selesai', 'Diambil');
+                    foreach ($status_array as $key) {
+                      if ($data['status'] == $key) {
+                        echo "<option value='$key' selected>$key</option>";
+                      } else {
+                        echo "<option value='$key'>$key</option>";
+                      }
+                    }
+                    ?>
                   </select>
                 </div>
               </div>

@@ -79,7 +79,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="index.php?page=data_transaksi">Home</a></li>
             <li class="breadcrumb-item active">Tambah Transaksi</li>
           </ol>
         </div>
@@ -112,7 +112,7 @@
                 </div>
                 <div class="form-group">
                   <label>PILIH PAKET</label>
-                  <select name="id_paket" class="form-control" required>
+                  <select name="id_paket" class="form-control" required oninvalid="this.setCustomValidity('Pilih Paket dengan benar')" oninput="setCustomValidity('')">
                     <option value="">-- PILIH PAKET --</option>
                     <?php
                     while ($key = mysqli_fetch_array($paket)) {
@@ -123,19 +123,19 @@
                 </div>
                 <div class="form-group">
                   <label>JUMLAH</label>
-                  <input type="number" name="qty" class="form-control" placeholder="JUMLAH" required>
+                  <input type="number" name="qty" class="form-control" placeholder="JUMLAH" required oninvalid="this.setCustomValidity('Masukan Jumlah Paket dengan benar')" oninput="setCustomValidity('')">
                 </div>
                 <div class="form-group">
                   <label>BIAYA TAMBAHAN</label>
-                  <input type="number" name="biaya_tambahan" value="0" class="form-control" placeholder="BIAYA TAMBAHAN" required>
+                  <input type="number" name="biaya_tambahan" value="0" class="form-control" placeholder="BIAYA TAMBAHAN" required oninvalid="this.setCustomValidity('Masukan Biaya Tambahan dengan benar')" oninput="setCustomValidity('')">
                 </div>
                 <div class="form-group">
                   <label>DISKON (%)</label>
-                  <input type="number" name="diskon" value="0" class="form-control" placeholder="DISKON" required>
+                  <input type="number" name="diskon" value="0" class="form-control" placeholder="DISKON" required oninvalid="this.setCustomValidity('Pilih Diskon dengan benar')" oninput="setCustomValidity('')">
                 </div>
                 <div class="form-group">
                   <label>PAJAK (%)</label>
-                  <input type="number" value="0" name="pajak" class="form-control" placeholder="PAJAK" required>
+                  <input type="number" value="0" name="pajak" class="form-control" placeholder="PAJAK" required oninvalid="this.setCustomValidity('Pilih Pajak dengan benar')" oninput="setCustomValidity('')">
                 </div>
               </div>
               <!-- /.box-body -->
