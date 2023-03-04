@@ -96,11 +96,11 @@
           <div class="box box-primary">
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" method="post">
+            <form role="form" method="post" enctype="multipart/form-data">
               <div class="box-body">
                 <div class="form-group">
                   <label>ID OUTLET</label>
-                  <input type="text" name="" class="form-control" placeholder="ID OUTLET" required value="<?= $outlet['nama']; ?>" readonly>
+                  <input type="text" name="id_outlet" class="form-control" placeholder="ID OUTLET" required value="<?= $outlet['nama']; ?>" readonly>
                 </div>
                 <div class="form-group">
                   <label>KODE INVOICE</label>
@@ -108,7 +108,7 @@
                 </div>
                 <div class="form-group">
                   <label>NAMA MEMBER</label>
-                  <input type="text" name="" readonly class="form-control" value="<?= $member['nama']; ?>" placeholder="ID MEMBER" required>
+                  <input type="text" name="id_member" readonly class="form-control" value="<?= $member['nama']; ?>" placeholder="ID MEMBER" required>
                 </div>
                 <div class="form-group">
                   <label>PILIHAN PAKET</label>

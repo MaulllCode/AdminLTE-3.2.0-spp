@@ -126,7 +126,7 @@
                 $query = mysqli_query($kon, "SELECT SUM(harga) FROM tb_detail_transaksi where keterangan = 'dibayar'");
                 $row = mysqli_fetch_column($query);
                 ?>
-                <h3><?php echo $row; ?></h3>
+                <h3><?php echo 'Rp. ' . number_format($row); ?></h3>
 
                 <p>Jumlah total penghasilan Transaksi</p>
               </div>
