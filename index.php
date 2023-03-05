@@ -38,15 +38,15 @@
     <?php
     session_start();
     include "conf/conn.php";
-    if (!isset($_SESSION['role'])) {
+    if (!isset($_SESSION['level'])) {
       echo '<script>alert("Anda Harus Login Terlebih Dahulu !!!"); window.location.href="pages/login.php"</script>';
     }
     ?>
 
     <!-- Preloader -->
-    <div class="preloader flex-column justify-content-center align-items-center">
+    <!-- <div class="preloader flex-column justify-content-center align-items-center">
       <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-    </div>
+    </div> -->
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -150,50 +150,52 @@
                 </p>
               </a>
               <ul class="nav nav-treeview">
-                <?php if ($_SESSION["role"] !== "Owner") { ?>
+                <?php if ($_SESSION["level"] == "admin") { ?>
                   <li class="nav-item">
-                    <a href="index.php?page=data_member" class="nav-link">
-                      <i class="far fa-user-circle nav-icon"></i>
-                      <p>Data member</p>
-                    </a>
-                  </li>
-                <?php } ?>
-                <?php if ($_SESSION["role"] == "Admin") { ?>
-                  <li class="nav-item">
-                    <a href="index.php?page=data_outlet" class="nav-link">
-                      <i class="fas fa-store nav-icon"></i>
-                      <p>Data Outlet</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="index.php?page=data_paket" class="nav-link">
+                    <a href="index.php?page=data_spp" class="nav-link">
                       <i class="fas fa-gift nav-icon"></i>
-                      <p>Data Paket</p>
+                      <p>Data SPP</p>
                     </a>
                   </li>
                 <?php } ?>
-                <?php if ($_SESSION["role"] !== "Owner") { ?>
+                <?php if ($_SESSION["level"] == "admin") { ?>
                   <li class="nav-item">
-                    <a href="index.php?page=data_transaksi" class="nav-link">
-                      <i class="fas fa-shopping-cart nav-icon"></i>
-                      <p>Data Transaksi</p>
+                    <a href="index.php?page=data_kelas" class="nav-link">
+                      <i class="fas fa-store nav-icon"></i>
+                      <p>Data Kelas</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="index.php?page=data_siswa" class="nav-link">
+                      <i class="far fa-user-circle nav-icon"></i>
+                      <p>Data Siswa</p>
                     </a>
                   </li>
                 <?php } ?>
-                <?php if ($_SESSION["role"] == "Admin") { ?>
+                <?php if ($_SESSION["level"] == "admin") { ?>
                   <li class="nav-item">
-                    <a href="index.php?page=data_user" class="nav-link">
+                    <a href="index.php?page=data_petugas" class="nav-link">
                       <i class="far fa-user nav-icon"></i>
-                      <p>Data user</p>
+                      <p>Data Petugas</p>
                     </a>
                   </li>
                 <?php } ?>
-                <li class="nav-item">
-                  <a href="index.php?page=laporan" class="nav-link">
-                    <i class="far fa-file nav-icon"></i>
-                    <p>Laporan</p>
-                  </a>
-                </li>
+                <?php if ($_SESSION["level"] !== "siswa") { ?>
+                  <li class="nav-item">
+                    <a href="index.php?page=data_pembayaran" class="nav-link">
+                      <i class="fas fa-shopping-cart nav-icon"></i>
+                      <p>Data Pembayaran</p>
+                    </a>
+                  </li>
+                <?php } ?>
+                <?php if ($_SESSION["level"] == "siswa") { ?>
+                  <li class="nav-item">
+                    <a href="index.php?page=histori_pembayaran" class="nav-link">
+                      <i class="fas fa-print nav-icon"></i>
+                      <p>Histori Pembayaran</p>
+                    </a>
+                  </li>
+                <?php } ?>
               </ul>
             </li>
             <li class="nav-item menu">
@@ -283,20 +285,20 @@
   <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
-      $('#user').DataTable();
+      $('#spp').DataTable();
     });
 
     $(document).ready(function() {
-      $('#member').DataTable();
+      $('#kelas').DataTable();
     });
     $(document).ready(function() {
-      $('#outlet').DataTable();
+      $('#siswa').DataTable();
     });
     $(document).ready(function() {
-      $('#paket').DataTable();
+      $('#petugas').DataTable();
     });
     $(document).ready(function() {
-      $('#transaksi').DataTable();
+      $('#pembayaran').DataTable();
     });
   </script>
 

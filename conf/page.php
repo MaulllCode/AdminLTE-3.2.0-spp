@@ -3,92 +3,92 @@ if (isset($_GET['page'])) {
   $page = $_GET['page'];
   switch ($page) {
       // Beranda
-    case 'data_user':
-      include 'pages/user/data_user.php';
+    case 'data_siswa':
+      include 'pages/siswa/data_siswa.php';
       break;
-    case 'tambah_user':
-      include 'pages/user/tambah_user.php';
+    case 'tambah_siswa':
+      include 'pages/siswa/tambah_siswa.php';
       break;
-    case 'ubah_user';
-      include 'pages/user/ubah_user.php';
+    case 'ubah_siswa';
+      include 'pages/siswa/ubah_siswa.php';
       break;
-    case 'hapus_user';
-      include 'pages/user/hapus_user.php';
+    case 'hapus_siswa';
+      include 'pages/siswa/hapus_siswa.php';
       break;
-    case 'data_member':
-      include 'pages/member/data_member.php';
+    case 'data_spp':
+      include 'pages/spp/data_spp.php';
       break;
-    case 'tambah_member':
-      include 'pages/member/tambah_member.php';
+    case 'tambah_spp':
+      include 'pages/spp/tambah_spp.php';
       break;
-    case 'ubah_member';
-      include 'pages/member/ubah_member.php';
+    case 'ubah_spp';
+      include 'pages/spp/ubah_spp.php';
       break;
-    case 'hapus_member';
-      include 'pages/member/hapus_member.php';
+    case 'hapus_spp';
+      include 'pages/spp/hapus_spp.php';
       break;
-    case 'data_outlet':
-      include 'pages/outlet/data_outlet.php';
+    case 'data_kelas':
+      include 'pages/kelas/data_kelas.php';
       break;
-    case 'tambah_outlet':
-      include 'pages/outlet/tambah_outlet.php';
+    case 'tambah_kelas':
+      include 'pages/kelas/tambah_kelas.php';
       break;
-    case 'ubah_outlet';
-      include 'pages/outlet/ubah_outlet.php';
+    case 'ubah_kelas';
+      include 'pages/kelas/ubah_kelas.php';
       break;
-    case 'hapus_outlet';
-      include 'pages/outlet/hapus_outlet.php';
+    case 'hapus_kelas';
+      include 'pages/kelas/hapus_kelas.php';
       break;
-    case 'data_paket':
-      include 'pages/paket/data_paket.php';
+    case 'data_petugas':
+      include 'pages/petugas/data_petugas.php';
       break;
-    case 'tambah_paket':
-      include 'pages/paket/tambah_paket.php';
+    case 'tambah_petugas':
+      include 'pages/petugas/tambah_petugas.php';
       break;
-    case 'ubah_paket';
-      include 'pages/paket/ubah_paket.php';
+    case 'ubah_petugas';
+      include 'pages/petugas/ubah_petugas.php';
       break;
-    case 'hapus_paket';
-      include 'pages/paket/hapus_paket.php';
+    case 'hapus_petugas';
+      include 'pages/petugas/hapus_petugas.php';
       break;
     case 'laporan':
-      include 'pages/transaksi/laporan.php';
+      include 'pages/pembayaran/laporan.php';
       break;
-    case 'data_transaksi':
-      include 'pages/transaksi/data_transaksi.php';
+    case 'data_pembayaran':
+      include 'pages/pembayaran/data_pembayaran.php';
       break;
-    case 'cari_member';
-      include 'pages/transaksi/cari_member.php';
+    case 'cari_spp';
+      include 'pages/pembayaran/cari_spp.php';
       break;
-    case 'hapus_transaksi';
-      include 'pages/transaksi/hapus_transaksi.php';
+    case 'hapus_pembayaran';
+      include 'pages/pembayaran/hapus_pembayaran.php';
       break;
-    case 'tambah_transaksi':
-      include 'pages/transaksi/tambah_transaksi.php';
+    case 'tambah_pembayaran':
+      include 'pages/pembayaran/tambah_pembayaran.php';
       break;
-    case 'tambah_transaksi2':
-      include 'pages/transaksi/tambah_transaksi2.php';
+    case 'tambah_pembayaran2':
+      include 'pages/pembayaran/tambah_pembayaran2.php';
       break;
-    case 'transaksi_sukses':
-      include 'pages/transaksi/transaksi_sukses.php';
+    case 'pembayaran_sukses':
+      include 'pages/pembayaran/pembayaran_sukses.php';
       break;
     case 'bayar';
-      include 'pages/transaksi/bayar.php';
+      include 'pages/pembayaran/bayar.php';
       break;
-    case 'transaksi_dibayar';
-      include 'pages/transaksi/transaksi_dibayar.php';
+    case 'pembayaran_dibayar';
+      include 'pages/pembayaran/pembayaran_dibayar.php';
       break;
-    case 'konfirmasi';
-      include 'pages/transaksi/konfirmasi.php';
+    case 'histori';
+      include 'pages/pembayaran/histori.php';
       break;
-    case 'detail';
-      include 'pages/transaksi/detail.php';
+    case 'histori_pembayaran';
+      include 'pages/pembayaran/histori_pembayaran.php';
       break;
     case 'keranjang';
-      include 'pages/transaksi/keranjang.php';
+      include 'pages/pembayaran/keranjang.php';
       break;
-    case 'cetak_laporan';
-      include 'pages/cetak_laporan.php';
+    case 'cetak';
+      include 'pages/cetak.php';
       break;
     default:
       echo "<center><h3>Halaman tidak di temukan !</h3></center>";

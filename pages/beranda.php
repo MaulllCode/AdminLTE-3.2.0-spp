@@ -22,15 +22,15 @@
             <div class="inner">
               <?php
               include "conf/conn.php";
-              $query = mysqli_query($kon, "SELECT * FROM tb_transaksi");
+              $query = mysqli_query($kon, "SELECT * FROM kelas");
               $row = mysqli_num_rows($query);
               ?>
               <h3><?php echo $row; ?></h3>
 
-              <p>Jumlah Transaksi</p>
+              <p>Jumlah Kelas</p>
             </div>
             <div class="icon">
-              <i class="ion ion-bag"></i>
+              <i class="ion ion-home"></i>
             </div>
 
           </div>
@@ -42,12 +42,12 @@
             <div class="inner">
               <?php
               include "conf/conn.php";
-              $query = mysqli_query($kon, "SELECT * FROM tb_outlet");
+              $query = mysqli_query($kon, "SELECT * FROM spp");
               $row = mysqli_num_rows($query);
               ?>
               <h3><?php echo $row; ?></h3>
 
-              <p>Jumlah Outlet</p>
+              <p>Jumlah Spp</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
@@ -62,13 +62,13 @@
             <div class="inner">
               <?php
               include "conf/conn.php";
-              $query = mysqli_query($kon, "SELECT * FROM tb_member");
+              $query = mysqli_query($kon, "SELECT * FROM siswa");
               $row = mysqli_num_rows($query);
               ?>
               <h3><?php echo $row; ?></h3>
               <?php  ?>
 
-              <p>Jumlah Member</p>
+              <p>Jumlah Siswa</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
@@ -77,66 +77,6 @@
           </div>
         </div>
         <!-- ./col -->
-        <?php if ($_SESSION["role"] !== "Owner") { ?>
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <?php
-                include "conf/conn.php";
-                $query = mysqli_query($kon, "SELECT * FROM tb_transaksi where dibayar = 'Dibayar'");
-                $row = mysqli_num_rows($query);
-                ?>
-                <h3><?php echo $row; ?></h3>
-
-                <p>Jumlah Transaksi yang telah dibayar</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <?php
-                include "conf/conn.php";
-                $query = mysqli_query($kon, "SELECT * FROM tb_transaksi where dibayar = 'Belum_dibayar'");
-                $row = mysqli_num_rows($query);
-                ?>
-                <h3><?php echo $row; ?></h3>
-
-                <p>Jumlah Transaksi yang belum dibayar</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-
-            </div>
-          </div>
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <?php
-                include "conf/conn.php";
-                $query = mysqli_query($kon, "SELECT SUM(harga) FROM tb_detail_transaksi where keterangan = 'dibayar'");
-                $row = mysqli_fetch_column($query);
-                ?>
-                <h3><?php echo 'Rp. ' . number_format($row); ?></h3>
-
-                <p>Jumlah total penghasilan Transaksi</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-arrow-graph-up-right"></i>
-              </div>
-
-            </div>
-          </div>
-        <?php } ?>
       </div>
       <!-- /.row -->
     </div><!-- /.container-fluid -->
