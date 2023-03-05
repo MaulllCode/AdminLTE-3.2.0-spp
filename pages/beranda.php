@@ -6,7 +6,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-6">
-          <h1 class="m-0">Selamat Datang di Aplikasi Laundry</h1>
+          <h1 class="m-0">Selamat Datang di Aplikasi Pembayaran SPP</h1>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->

@@ -7,7 +7,7 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-  <title>Aplikasi Pengelolaan Laundry | Login</title>
+  <title>Aplikasi Pengelolaan SPP | Login</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -62,11 +62,11 @@
     <div class="card-header login-box">
       <div class="login-logo">
         <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3 mb-3" style="opacity: .8"> <br>
-        Aplikasi Laundry
+        Aplikasi Pembayaran Spp
       </div>
       <!-- /.login-logo -->
       <div class="card-body login-box-body">
-        <p class="login-box-msg">Log In Untuk Masuk Ke Halaman Aplikasi Laundry.</p>
+        <p class="login-box-msg">Log In Untuk Masuk Ke Halaman Aplikasi Pembayaran Spp.</p>
         <form method="post">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" name="nisn" placeholder="NISN">
