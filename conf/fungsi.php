@@ -37,6 +37,6 @@ function hapus($where, $table, $redirect)
   echo $query;
 }
 
-$outlet = ambilsatubaris($kon, 'SELECT nama from tb_outlet WHERE id_outlet = ' . $id_outlet);
-$member = ambilsatubaris($kon, 'SELECT nama from tb-member WHERE id_member = ' . $id_member);
-$paket = ambildata($kon, 'SELECT * FROM tb_paket WHERE id_outlet = ' . $id_outlet);
+$kelas = ambilsatubaris($kon, 'SELECT nama_kelas from kelas');
+$siswa = ambilsatubaris($kon, 'SELECT nama from siswa');
+$spp = ambildata($kon, 'SELECT * FROM spp');

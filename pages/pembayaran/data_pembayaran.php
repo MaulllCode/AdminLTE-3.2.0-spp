@@ -31,9 +31,15 @@
       <div class="row">
         <div class="card-header col">
           <div class="box box-primary">
-            <div class="box-header pb-3">
-              <a href="pages/cetak.php" target="_blank" class="btn btn-success" role="button" title="Laporan Transaksi"><i class="fas fa-print"></i></i> Print</a>
-            </div>
+            <?php
+            if ($_SESSION["level"] == "admin") {
+            ?>
+              <div class="box-header pb-3">
+                <a href="pages/cetak.php" target="_blank" class="btn btn-success" role="button" title="Laporan Transaksi"><i class="fas fa-print"></i> Print</a>
+              </div>
+            <?php
+            }
+            ?>
             <div class="box-body table-responsive">
               <div class="box-body table-responsive">
                 <table id="pembayaran" class="table table-bordered table-hover">
@@ -44,7 +50,6 @@
                       <th>NAMA</th>
                       <th>KELAS</th>
                       <th>SPP</th>
-                      <!-- <th>NOMINAL</th> -->
                       <th>PEMBAYARAN</th>
                       <th>KEKURANGAN</th>
                       <th>STATUS</th>
@@ -88,7 +93,7 @@
                           <td>
                             <?php
                             if ($kekurangan == 0) {
-                              echo "<span class='badge badge-success'>Sudah Lunas</span>";
+                              echo "<span class='badge badge-primary'>Sudah Lunas</span>";
                             } else {
                               echo 'Rp. ' . number_format($kekurangan);
                             } ?>
@@ -97,11 +102,11 @@
                             if ($kekurangan == 0) {
                               echo "<span class='badge badge-success'>Sudah Lunas</span>";
                             } else { ?>
-                              <a href="index.php?page=tambah_pembayaran&nisn=<?= $data['nisn'] ?>&kekurangan=<?= $kekurangan ?>" class="btn btn-success">Pilih & Bayar</a>
+                              <a href="index.php?page=tambah_pembayaran&nisn=<?= $data['nisn'] ?>&kekurangan=<?= $kekurangan ?>" class="btn btn-success"><i class="fas fa-check"></i> Pilih & Bayar</a>
                             <?php } ?>
                           </td>
                           <td>
-                            <a href="index.php?page=histori&nisn=<?= $data['nisn'] ?>" class="btn btn-warning">History</a>
+                            <a href="index.php?page=histori&nisn=<?= $data['nisn'] ?>" class="btn btn-warning"><i class="fas fa-search"></i> History</a>
                           </td>
                         </tr>
                     <?php }

@@ -49,9 +49,19 @@
         $_SESSION['nama_petugas'] = $data['nama_petugas'];
         $_SESSION['level'] = $data['level'];
         if ($data['level'] == 'admin') {
-          echo '<script>alert("Selamat datang Kamu Telah Login Ke Aplikasi Pembayaran SPP!!!"); window.location.href="../index.php"</script>';
+    ?>
+          <script>
+            alert("Selamat datang <?= $data['nama_petugas']; ?> Kamu Telah Login Ke Aplikasi Laundry sebagai <?= $data['level']; ?> !!!");
+            window.location.href = "../index.php";
+          </script>
+        <?php
         } else if ($data['level'] == 'petugas') {
-          echo '<script>alert("Selamat datang Kamu Telah Login Ke Aplikasi Pembayaran SPP!!!"); window.location.href="../index.php"</script>';
+        ?>
+          <script>
+            alert("Selamat datang <?= $data['nama_petugas']; ?> Kamu Telah Login Ke Aplikasi Laundry sebagai <?= $data['level']; ?> !!!");
+            window.location.href = "../index.php";
+          </script>
+    <?php
         }
       } else {
         echo '<script>alert("Masukan Username dan Password dengan Benar !!!"); window.location.href="login-siswa.php"</script>';

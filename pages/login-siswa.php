@@ -50,9 +50,14 @@
         $_SESSION['nisn'] = $data['nisn'];
         $_SESSION['level'] = 'siswa';
         // header('location: siswa/siswa.php');
-        echo '<script>alert("Selamat datang Kamu Telah Login Ke Aplikasi Pembayaran SPP!!!"); window.location.href="../index.php"</script>';
+    ?>
+        <script>
+          alert("Selamat datang <?= $data['nama']; ?> Kamu Telah Login Ke Aplikasi Laundry sebagai <?= $_SESSION['level']; ?> !!!");
+          window.location.href = "../index.php";
+        </script>
+    <?php
       } else {
-        echo '<script>alert("Masukan Username dan Password dengan Benar !!!"); window.location.href="login-siswa.php"</script>';
+        echo '<script>alert("Masukan NISN dan NIS dengan Benar !!!"); window.location.href="login-siswa.php"</script>';
       }
     }
     ?>
@@ -62,11 +67,11 @@
     <div class="card-header login-box">
       <div class="login-logo">
         <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3 mb-3" style="opacity: .8"> <br>
-        Aplikasi Pembayaran Spp
+        Aplikasi Pembayaran SPP
       </div>
       <!-- /.login-logo -->
       <div class="card-body login-box-body">
-        <p class="login-box-msg">Log In Untuk Masuk Ke Halaman Aplikasi Pembayaran Spp.</p>
+        <p class="login-box-msg">Log In Untuk Masuk Ke Halaman Aplikasi Pembayaran SPP.</p>
         <form method="post">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" name="nisn" placeholder="NISN">

@@ -3,14 +3,14 @@ PROCEDURE
 
 DELIMITER $$
 
-CREATE PROCEDURE getMember()
+CREATE PROCEDURE getSPP()
 BEGIN
-  SELECT id_member, nama FROM tb_member;
+  SELECT id_spp, tahun, nominal FROM spp;
 END$$
 
 DELIMITER ;
 
-CALL getMember()
+CALL getSPP()
 ]
 
 
@@ -19,19 +19,21 @@ PROCEDURE dengan parameter
 
 DELIMITER $$
 
-CREATE PROCEDURE getPaket
+DELIMITER $$
+
+CREATE PROCEDURE getPetugas
 (
-	jenisPaket VARCHAR(100)
+	level VARCHAR(100)
 )
 BEGIN
     SELECT *
-    FROM tb_paket
-    WHERE jenis = jenisPaket;
+    FROM petugas
+    WHERE level = level;
 END$$
 
 DELIMITER ;
 
-CALL getPaket("kiloan")
+CALL getPetugas("petugas")
 ]
 
 
@@ -40,20 +42,20 @@ PROCEDURE dengan DML
 
 DELIMITER $$
 
-CREATE PROCEDURE insertMember
+CREATE PROCEDURE insertKelas
 (
-	nama VARCHAR(100),
-	alamat VARCHAR(100),
-	jenis_kelamin VARCHAR(100),
-	tlp INT(100)
+	nama_kelas VARCHAR(100),
+	kompetensi_keahlian VARCHAR(100)
 )
 BEGIN
-    INSERT INTO tb_member
-    VALUES (NULL, nama, alamat, jenis_kelamin, tlp);
+    INSERT INTO kelas
+    VALUES (NULL, nama_kelas, kompetensi_keahlian);
 
 END$$
 
 DELIMITER ;
+
+CALL insertKelas("petugas", "petugas")
 ]
 
 
@@ -61,17 +63,18 @@ DELIMITER ;
 TRIGGER
 
 DELIMITER $$
-CREATE TRIGGER update_alamat_member
+CREATE TRIGGER update_kelas
     BEFORE UPDATE
-    ON tb_member
+    ON kelas
     FOR EACH ROW
 BEGIN
-    INSERT INTO log_member
-    set id_member = OLD.id_member,
-    alamat_lama=old.alamat,
-    alamat_baru=new.alamat;
+    INSERT INTO log_kelas
+    set id_kelas = OLD.id_kelas,
+    nama_kelas_lama=old.nama_kelas,
+    nama_kelas_baru=new.nama_kelas;
 END$$
 DELIMITER ;
+
 ]
 
 
@@ -79,18 +82,18 @@ DELIMITER ;
 COMMIT
 
 START TRANSACTION;
-INSERT INTO tb_member VALUES (NULL, 'tes', 'tes', 'L', 0);
+INSERT INTO spp VALUES (NULL, 'tes', 2000);
 COMMIT;
-SELECT * FROM tb_member;
+SELECT * FROM spp;
 ]
 
 [
 ROLLBACK
 
 START TRANSACTION;
-SELECT * FROM tb_member;
-INSERT INTO tb_member VALUES (NULL, 'tes2', 'tes2', 'P', 0);
-SELECT * FROM tb_member;
+INSERT INTO spp VALUES (NULL, 'tes', 2000);
+COMMIT;
+SELECT * FROM spp;
 ROLLBACK;
-SELECT * FROM tb_member;
+SELECT * FROM spp;
 ]

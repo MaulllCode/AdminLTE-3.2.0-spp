@@ -45,7 +45,6 @@
                       <th>NAMA</th>
                       <th>KELAS</th>
                       <th>SPP</th>
-                      <th>NOMINAL</th>
                       <th>PEMBAYARAN</th>
                       <th>TANGGAL BAYAR</th>
                       <th>BULAN BAYAR</th>
@@ -72,8 +71,9 @@
                         <td><?= $data['nisn'] ?></td>
                         <td><?= $data['nama'] ?></td>
                         <td><?= $data['nama_kelas'] ?></td>
-                        <td><?= $data['tahun'] ?></td>
-                        <td><?= 'Rp. ' .  number_format($data['nominal']); ?></td>
+                        <td>
+                          <?= $data['tahun'] ?> - <?= 'Rp. ', number_format($data['nominal']); ?>
+                        </td>
                         <td><?= 'Rp. ' .  number_format($data['jumlah_bayar']); ?></td>
                         <td><?= $data['tgl_bayar'] ?></td>
                         <td><?= $data['bulan_dibayar'] ?></td>
@@ -81,7 +81,7 @@
                         <?php
                         if ($_SESSION["level"] == "admin" or "petugas") { ?>
                           <td>
-                            <a href="index.php?page=hapus_pembayaran&id_pembayaran=<?= $data['id_pembayaran'] ?>" class="btn btn-danger">HAPUS</a>
+                            <a onclick="return confirm('Apakah yakin menghapus Data')" onclick="return confirm('Apakah yakin menghapus Data')" href="index.php?page=hapus_pembayaran&id_pembayaran=<?= $data['id_pembayaran'] ?>" class="btn btn-danger"><i class="fas fa-trash"></i> HAPUS</a>
                           </td>
                         <?php } ?>
                       </tr>

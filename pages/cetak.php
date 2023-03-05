@@ -23,7 +23,6 @@ setlocale(LC_TIME, 'id_ID.utf8');
         <th>NAMA</th>
         <th>KELAS</th>
         <th>SPP</th>
-        <th>NOMINAL</th>
         <th>PEMBAYARAN</th>
         <th>TANGGAL BAYAR</th>
         <th>BULAN BAYAR</th>
@@ -44,8 +43,9 @@ setlocale(LC_TIME, 'id_ID.utf8');
           <td><?= $data['nisn'] ?></td>
           <td><?= $data['nama'] ?></td>
           <td><?= $data['nama_kelas'] ?></td>
-          <td><?= $data['tahun'] ?></td>
-          <td><?= 'Rp. ' .  number_format($data['nominal']); ?></td>
+          <td>
+            <?= $data['tahun'] ?> - <?= 'Rp. ', number_format($data['nominal']); ?>
+          </td>
           <td><?= 'Rp. ' .  number_format($data['jumlah_bayar']); ?></td>
           <td><?= $data['tgl_bayar'] ?></td>
           <td><?= $data['bulan_dibayar'] ?></td>
