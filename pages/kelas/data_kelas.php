@@ -47,23 +47,27 @@
                 <tbody>
 
                   <?php
-                  include "conf/conn.php";
+                  include "conf/function.php";
                   $no = 1;
-                  $query = mysqli_query($kon, "SELECT * FROM kelas");
-                  while ($row = mysqli_fetch_array($query)) {
+                  $sql = "SELECT * FROM kelas";
+                  $query = select_db($kon, $sql);
+                  if (!empty($query)) {
+                    foreach ($query as $row) {
+                      // while ($row = mysqli_fetch_assoc($query)) {
                   ?>
 
-                    <tr>
-                      <td><?php echo $no++; ?></td>
-                      <td><?php echo $row['nama_kelas']; ?></td>
-                      <td><?php echo $row['kompetensi_keahlian']; ?></td>
-                      <td>
-                        <a href="index.php?page=ubah_kelas&id_kelas=<?= $row['id_kelas']; ?>" class="btn btn-success" level="button" title="Ubah Data"><i class="fas fa-edit"></i> Ubah</a>
-                        <a onclick="return confirm('Apakah yakin menghapus Data')" href="index.php?page=hapus_kelas&id_kelas=<?= $row['id_kelas']; ?>" class="btn btn-danger" level="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
-                      </td>
-                    </tr>
+                      <tr>
+                        <td><?php echo $no++; ?></td>
+                        <td><?php echo $row['nama_kelas']; ?></td>
+                        <td><?php echo $row['kompetensi_keahlian']; ?></td>
+                        <td>
+                          <a href="index.php?page=ubah_kelas&id_kelas=<?= $row['id_kelas']; ?>" class="btn btn-success" level="button" title="Ubah Data"><i class="fas fa-edit"></i> Ubah</a>
+                          <a onclick="return confirm('Apakah yakin menghapus Data')" href="index.php?page=hapus_kelas&id_kelas=<?= $row['id_kelas']; ?>" class="btn btn-danger" level="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
+                        </td>
+                      </tr>
 
-                  <?php } ?>
+                  <?php }
+                  } ?>
 
                 </tbody>
               </table>

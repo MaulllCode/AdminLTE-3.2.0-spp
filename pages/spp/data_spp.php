@@ -54,27 +54,30 @@
                 <tbody>
 
                   <?php
-                  include "conf/conn.php";
+                  include "conf/function.php";
                   $no = 1;
-                  $query = mysqli_query($kon, "SELECT * FROM spp");
-                  while ($row = mysqli_fetch_array($query)) {
+                  $query = select_db($kon, "SELECT * FROM spp ");
+                  // while ($row = mysqli_fetch_array($query)) {
+                  if (!empty($query)) {
+                    foreach ($query as $row) {
                   ?>
-                    <tr>
-                      <td><?php echo $no++; ?></td>
-                      <td><?php echo $row['tahun']; ?></td>
-                      <td><?php echo 'Rp. ', number_format($row['nominal']); ?></td>
-                      <?php
-                      if ($_SESSION["level"] == "admin") {
-                      ?>
-                        <td>
-                          <a href="index.php?page=ubah_spp&id_spp=<?= $row['id_spp']; ?>" class="btn btn-success" role="button" title="Ubah Data"><i class="fas fa-edit"></i> Ubah</a>
-                          <a onclick="return confirm('Apakah yakin menghapus Data')" href="index.php?page=hapus_spp&id_spp=<?= $row['id_spp']; ?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
-                        </td>
-                      <?php
-                      }
-                      ?>
-                    </tr>
-                  <?php } ?>
+                      <tr>
+                        <td><?php echo $no++; ?></td>
+                        <td><?php echo $row['tahun']; ?></td>
+                        <td><?php echo 'Rp. ', number_format($row['nominal']); ?></td>
+                        <?php
+                        if ($_SESSION["level"] == "admin") {
+                        ?>
+                          <td>
+                            <a href="index.php?page=ubah_spp&id_spp=<?= $row['id_spp']; ?>" class="btn btn-success" role="button" title="Ubah Data"><i class="fas fa-edit"></i> Ubah</a>
+                            <a onclick="return confirm('Apakah yakin menghapus Data')" href="index.php?page=hapus_spp&id_spp=<?= $row['id_spp']; ?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
+                          </td>
+                        <?php
+                        }
+                        ?>
+                      </tr>
+                  <?php }
+                  } ?>
                 </tbody>
               </table>
             </div>

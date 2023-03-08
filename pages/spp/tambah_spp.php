@@ -2,14 +2,15 @@
   <?php
 
   // <!-- proses -->
+  include "conf/function.php";
+
   if (isset($_POST['tambah'])) {
     $tahun = $_POST['tahun'];
     $nominal = $_POST['nominal'];
 
     $sql = "INSERT INTO spp VALUES (NULL,'$tahun', '$nominal')";
-    $query = mysqli_query($kon, $sql);
+    $query = crud($kon, $sql);
     if ($query) {
-      header('location:?url=spp');
       echo '<script>alert("Data Berhasil Ditambahkan !!!"); window.location.href="index.php?page=data_spp"</script>';
     } else {
       die("Connection failed: " . mysqli_connect_error());

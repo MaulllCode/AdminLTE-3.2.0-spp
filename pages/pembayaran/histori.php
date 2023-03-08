@@ -33,7 +33,7 @@
         <div class="card-header col">
           <div class="box box-primary">
             <div class="box-header">
-              <!-- <a href="pages/cetak.php" target="_blank" class="btn btn-success" role="button" title="Laporan Transaksi"><i class="fas fa-print"></i></i> Print</a> -->
+              <!-- <a href="index.php?page=cetak&nisn=<?= $nisn ?>" target="_blank" class="btn btn-success" role="button" title="Laporan Transaksi"><i class="fas fa-print"></i> Print</a> -->
             </div>
             <div class="box-body table-responsive">
               <div class="box-body table-responsive">

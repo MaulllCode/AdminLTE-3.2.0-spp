@@ -53,28 +53,31 @@
                   <tbody>
 
                     <?php
-                    include "conf/conn.php";
+                    include "conf/function.php";
                     $no = 1;
-                    $query = mysqli_query($kon, "SELECT * FROM siswa, spp,kelas WHERE siswa.id_kelas=kelas.id_kelas AND siswa.id_spp=spp.id_spp ORDER BY nama ASC");
-                    while ($data = mysqli_fetch_array($query)) {
+                    $query = select_db($kon, "SELECT * FROM siswa, spp,kelas WHERE siswa.id_kelas=kelas.id_kelas AND siswa.id_spp=spp.id_spp ORDER BY nama ASC");
+                    // while ($data = mysqli_fetch_array($query)) {
+                    if (!empty($query)) {
+                      foreach ($query as $data) {
                     ?>
 
-                      <tr>
-                        <td><?php echo $no++; ?></td>
-                        <td><?= $data['nisn'] ?></td>
-                        <td><?= $data['nis'] ?></td>
-                        <td><?= $data['nama'] ?></td>
-                        <td><?= $data['nama_kelas'] ?></td>
-                        <td><?= $data['alamat'] ?></td>
-                        <td><?= $data['no_telp'] ?></td>
-                        <td><?= $data['tahun'] ?> - <?= 'Rp. ', number_format($data['nominal']); ?></td>
-                        <td>
-                          <a href="index.php?page=ubah_siswa&nisn=<?= $data['nisn']; ?>" class="btn btn-success" level="button" title="Ubah Data"><i class="fas fa-edit"></i> Ubah</a>
-                          <a onclick="return confirm('Apakah yakin menghapus Data')" href="index.php?page=hapus_siswa&nisn=<?= $data['nisn']; ?>" class="btn btn-danger" level="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
-                        </td>
-                      </tr>
+                        <tr>
+                          <td><?php echo $no++; ?></td>
+                          <td><?= $data['nisn'] ?></td>
+                          <td><?= $data['nis'] ?></td>
+                          <td><?= $data['nama'] ?></td>
+                          <td><?= $data['nama_kelas'] ?></td>
+                          <td><?= $data['alamat'] ?></td>
+                          <td><?= $data['no_telp'] ?></td>
+                          <td><?= $data['tahun'] ?> - <?= 'Rp. ', number_format($data['nominal']); ?></td>
+                          <td>
+                            <a href="index.php?page=ubah_siswa&nisn=<?= $data['nisn']; ?>" class="btn btn-success" level="button" title="Ubah Data"><i class="fas fa-edit"></i> Ubah</a>
+                            <a onclick="return confirm('Apakah yakin menghapus Data')" href="index.php?page=hapus_siswa&nisn=<?= $data['nisn']; ?>" class="btn btn-danger" level="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
+                          </td>
+                        </tr>
 
-                    <?php } ?>
+                    <?php }
+                    } ?>
 
                   </tbody>
                 </table>

@@ -1,6 +1,8 @@
 <?php
 
-function ambildata($kon, $query)
+require 'conn.php';
+
+function select_db($kon, $query)
 {
   $data = mysqli_query($kon, $query);
   if (mysqli_num_rows($data) > 0) {
@@ -12,7 +14,7 @@ function ambildata($kon, $query)
   }
 }
 
-function bisa($kon, $query)
+function crud($kon, $query)
 {
   $db = mysqli_query($kon, $query);
 
@@ -23,20 +25,14 @@ function bisa($kon, $query)
   }
 }
 
-
-
-function ambilsatubaris($kon, $query)
+function select_id($kon, $query)
 {
   $db = mysqli_query($kon, $query);
   return mysqli_fetch_assoc($db);
 }
 
-function hapus($where, $table, $redirect)
+function hapus_data($where, $table, $redirect)
 {
   $query = 'DELETE FROM ' . $table . ' WHERE ' . $where;
   echo $query;
 }
-
-$kelas = ambilsatubaris($kon, 'SELECT nama_kelas from kelas');
-$siswa = ambilsatubaris($kon, 'SELECT nama from siswa');
-$spp = ambildata($kon, 'SELECT * FROM spp');

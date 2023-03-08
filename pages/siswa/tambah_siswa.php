@@ -1,6 +1,8 @@
 <div>
   <?php
   // <!-- proses -->
+  include "conf/function.php";
+
   if (isset($_POST['tambah'])) {
     $nisn = $_POST['nisn'];
     $nis = $_POST['nis'];
@@ -12,7 +14,7 @@
 
     $sql = "INSERT INTO siswa VALUES ('$nisn', '$nis', '$nama', '$id_kelas', '$alamat', '$no_telp', '$id_spp')";
 
-    $result = mysqli_query($kon, $sql);
+    $result = crud($kon, $sql);
 
     if (!$result) {
       die("Connection failed: " . mysqli_connect_error());

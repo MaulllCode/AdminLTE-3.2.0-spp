@@ -1,6 +1,7 @@
 <div>
   <?php
   // <!-- Proses -->
+  include 'conf/function.php';
   if (isset($_POST['ubah'])) {
     $id_kelas = $_GET['id_kelas'];
     $nama_kelas = $_POST['nama_kelas'];
@@ -8,7 +9,7 @@
 
     $sql = "UPDATE kelas SET nama_kelas='$nama_kelas',kompetensi_keahlian='$kompetensi_keahlian' WHERE id_kelas='$id_kelas'";
 
-    $result = mysqli_query($kon, $sql);
+    $result = crud($kon, $sql);
 
     if (!$result) {
       die("Connection failed: " . mysqli_connect_error());
@@ -22,8 +23,8 @@
   }
 
   // <!-- ambil data -->
-  $query = mysqli_query($kon, "SELECT * FROM kelas WHERE id_kelas='" . $_GET['id_kelas'] . "'");
-  $row = mysqli_fetch_array($query);
+  $row = select_id($kon, "SELECT * FROM kelas WHERE id_kelas='" . $_GET['id_kelas'] . "'");
+  // $row = mysqli_fetch_array($query);
   ?>
 
 </div>

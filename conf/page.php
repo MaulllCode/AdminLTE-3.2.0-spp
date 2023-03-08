@@ -71,6 +71,9 @@ if (isset($_GET['page'])) {
       include 'pages/pembayaran/histori_pembayaran.php';
       break;
     case 'cetak';
+      include 'pages/pembayaran/cetak.php';
+      break;
+    case 'cetak';
       include 'pages/cetak.php';
       break;
     default:

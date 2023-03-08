@@ -34,18 +34,21 @@ echo "Nilai anda: $nilai dengan Grade $grade";
 ?>
 
 5. Tuliskan kode program yang tepat untuk
+
 <?php
-function luas1 ($panjang, $lebar) {
-  echo "Luas Persegi 1 = " $panjang * $lebar;
+function luas1($panjang, $lebar)
+{
+    echo "Luas Persegi 1 = " . $panjang * $lebar;
 }
 
-function luas2 ($panjang, $lebar) {
-  echo "Luas Persegi 2 = " $panjang * $lebar;
+function luas2($panjang, $lebar)
+{
+    echo "Luas Persegi 2 = " . $panjang * $lebar;
 }
 
-$hasil = luas1(10,5);
-echo "Luas Persegi 1 = " . .....;
-echo "<br>;
+$hasil = luas1(10, 5);
+echo "Luas Persegi 1 =" . $hasil;
+echo "<br>";
 
-luas2(10,5);
+luas2(10, 5);
 ?>

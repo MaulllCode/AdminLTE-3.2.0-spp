@@ -1,6 +1,8 @@
 <div>
   <?php
   // <!-- proses -->
+  include "conf/function.php";
+
   if (isset($_POST['ubah'])) {
     $id_petugas = $_GET['id_petugas'];
     $username = $_POST['username'];
@@ -10,7 +12,7 @@
 
     $sql = "UPDATE petugas SET username='$username', password='$password',nama_petugas='$nama_petugas',level='$level' WHERE id_petugas='$id_petugas'";
 
-    $result = mysqli_query($kon, $sql);
+    $result = crud($kon, $sql);
 
     if (!$result) {
       die("Connection failed: " . mysqli_connect_error());
@@ -23,8 +25,8 @@
     echo '<script>alert("Hanya Admin yang dapat mengakses halaman ini !!!"); window.location.href="index.php"</script>';
   }
   // <!-- ambil data -->
-  $query = mysqli_query($kon, "SELECT * FROM petugas WHERE id_petugas='" . $_GET['id_petugas'] . "'");
-  $row = mysqli_fetch_array($query);
+  $row = select_id($kon, "SELECT * FROM petugas WHERE id_petugas='" . $_GET['id_petugas'] . "'");
+  // $row = mysqli_fetch_array($query);
   ?>
 </div>
 

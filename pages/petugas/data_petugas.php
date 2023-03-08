@@ -50,25 +50,28 @@
                   <tbody>
 
                     <?php
-                    include "conf/conn.php";
+                    include "conf/function.php";
                     $no = 1;
-                    $query = mysqli_query($kon, "SELECT * FROM petugas");
-                    while ($row = mysqli_fetch_array($query)) {
+                    $query = select_db($kon, "SELECT * FROM petugas");
+                    // while ($row = mysqli_fetch_array($query)) {
+                    if (!empty($query)) {
+                      foreach ($query as $row) {
                     ?>
 
-                      <tr>
-                        <td><?php echo $no++; ?></td>
-                        <td><?php echo $row['username']; ?></td>
-                        <td><?php echo $row['password']; ?></td>
-                        <td><?php echo $row['nama_petugas']; ?></td>
-                        <td><?php echo $row['level']; ?></td>
-                        <td>
-                          <a href="index.php?page=ubah_petugas&id_petugas=<?= $row['id_petugas']; ?>" class="btn btn-success" level="button" title="Ubah Data"><i class="fas fa-edit"></i> Ubah</a>
-                          <a onclick="return confirm('Apakah yakin menghapus Data')" href="index.php?page=hapus_petugas&id_petugas=<?= $row['id_petugas']; ?>" class="btn btn-danger" level="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
-                        </td>
-                      </tr>
+                        <tr>
+                          <td><?php echo $no++; ?></td>
+                          <td><?php echo $row['username']; ?></td>
+                          <td><?php echo $row['password']; ?></td>
+                          <td><?php echo $row['nama_petugas']; ?></td>
+                          <td><?php echo $row['level']; ?></td>
+                          <td>
+                            <a href="index.php?page=ubah_petugas&id_petugas=<?= $row['id_petugas']; ?>" class="btn btn-success" level="button" title="Ubah Data"><i class="fas fa-edit"></i> Ubah</a>
+                            <a onclick="return confirm('Apakah yakin menghapus Data')" href="index.php?page=hapus_petugas&id_petugas=<?= $row['id_petugas']; ?>" class="btn btn-danger" level="button" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
+                          </td>
+                        </tr>
 
-                    <?php } ?>
+                    <?php }
+                    } ?>
 
                   </tbody>
                 </table>

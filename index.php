@@ -29,6 +29,7 @@
 
   <link rel="stylesheet" href="plugins\datatables-bs4\css\dataTables.bootstrap4.css">
   <link rel="stylesheet" href="plugins\datatables-bs4\css\dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../media/css/jquery.dataTables.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -44,9 +45,9 @@
     ?>
 
     <!-- Preloader -->
-    <div class="preloader flex-column justify-content-center align-items-center">
+    <!-- <div class="preloader flex-column justify-content-center align-items-center">
       <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-    </div>
+    </div> -->
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -283,11 +284,11 @@
   <script src="plugins\jquery\jquery.js"></script>
   <script src="plugins\datatables\jquery.dataTables.js"></script>
   <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="../../media/css/jquery.dataTables.css"></script>
   <script type="text/javascript">
     $(document).ready(function() {
       $('#spp').DataTable();
     });
-
     $(document).ready(function() {
       $('#kelas').DataTable();
     });

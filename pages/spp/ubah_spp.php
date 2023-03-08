@@ -1,6 +1,8 @@
 <div>
   <?php
   // <!-- Proses -->
+  include "conf/function.php";
+
   if (isset($_POST['ubah'])) {
     $id_spp = $_GET['id_spp'];
     $tahun = $_POST['tahun'];
@@ -8,7 +10,7 @@
 
     $sql = "UPDATE spp set tahun='$tahun',nominal='$nominal' WHERE id_spp='$id_spp'";
 
-    $result = mysqli_query($kon, $sql);
+    $result = crud($kon, $sql);
 
     if (!$result) {
       die("Connection failed: " . mysqli_connect_error());
@@ -27,8 +29,8 @@
 
   <?php
   // <!-- ambil data -->
-  $query = mysqli_query($kon, "SELECT * FROM spp WHERE id_spp='" . $_GET['id_spp'] . "'");
-  $row = mysqli_fetch_array($query);
+  $row = select_id($kon, "SELECT * FROM spp WHERE id_spp='" . $_GET['id_spp'] . "'");
+  // $row = mysqli_fetch_array($query);
   ?>
 </div>
 

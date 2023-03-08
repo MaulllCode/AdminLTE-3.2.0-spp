@@ -41,7 +41,7 @@
       $nis = $_POST['nis'];
 
       // include 'koneksi.php';
-      $sql = "SELECT * FROM siswa where nisn='$nisn' AND nis='$nis'";
+      $sql = "SELECT * FROM siswa WHERE nisn='$nisn' AND nis='$nis'";
       $query = mysqli_query($kon, $sql);
       if (mysqli_num_rows($query) > 0) {
         session_start();

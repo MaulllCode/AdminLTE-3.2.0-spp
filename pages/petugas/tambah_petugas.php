@@ -1,6 +1,9 @@
 <div>
   <?php
   // <!-- proses -->
+
+  include "conf/function.php";
+
   if (isset($_POST['tambah'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -9,7 +12,7 @@
 
     $sql = "INSERT INTO petugas VALUES (NULL, '$username', '$password', '$nama_petugas', '$level')";
 
-    $result = mysqli_query($kon, $sql);
+    $result = crud($kon, $sql);
 
     if (!$result) {
       die("Connection failed: " . mysqli_connect_error());

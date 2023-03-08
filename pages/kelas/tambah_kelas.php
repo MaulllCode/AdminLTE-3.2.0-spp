@@ -1,13 +1,14 @@
 <div>
   <?php
   // <!-- proses -->
+  include 'conf/function.php';
   if (isset($_POST['tambah'])) {
     $nama_kelas = $_POST['nama_kelas'];
     $kompetensi_keahlian = $_POST['kompetensi_keahlian'];
 
     $sql = "INSERT INTO kelas VALUES (NULL, '$nama_kelas', '$kompetensi_keahlian')";
 
-    $result = mysqli_query($kon, $sql);
+    $result = crud($kon, $sql);
 
     if (!$result) {
       die("Connection failed: " . mysqli_connect_error());

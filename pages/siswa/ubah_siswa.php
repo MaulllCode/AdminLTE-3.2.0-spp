@@ -1,6 +1,8 @@
 <div>
   <?php
   // <!-- proses -->
+  include "conf/function.php";
+
   if (isset($_POST['ubah'])) {
     $nisn = $_GET['nisn'];
     $nis = $_POST['nis'];
@@ -10,9 +12,9 @@
     $no_telp = $_POST['no_telp'];
     $id_spp = $_POST['id_spp'];
 
-    $sql = "UPDATE siswa set nis='$nis',nama='$nama',id_kelas='$id_kelas',alamat='$alamat',no_telp='$no_telp',id_spp='$id_spp' WHERE nisn='$nisn'";
+    $sql = "UPDATE siswa set nis='$nis', nama='$nama', id_kelas='$id_kelas', alamat='$alamat', no_telp='$no_telp',id_spp='$id_spp' WHERE nisn='$nisn'";
 
-    $result = mysqli_query($kon, $sql);
+    $result = crud($kon, $sql);
 
     if (!$result) {
       die("Connection failed: " . mysqli_connect_error());
@@ -25,8 +27,8 @@
     echo '<script>alert("Hanya Admin yang dapat mengakses halaman ini !!!"); window.location.href="index.php"</script>';
   }
   // <!-- ambil data -->
-  $query = mysqli_query($kon, "SELECT * FROM siswa WHERE nisn='" . $_GET['nisn'] . "'");
-  $row = mysqli_fetch_array($query);
+  $row = select_id($kon, "SELECT * FROM siswa WHERE nisn='" . $_GET['nisn'] . "'");
+  // $row = mysqli_fetch_array($query);
   ?>
 </div>
 

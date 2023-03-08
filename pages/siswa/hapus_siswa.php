@@ -4,12 +4,13 @@ if ($_SESSION["level"] !== "admin") {
   echo '<script>alert("Hanya Admin yang dapat mengakses halaman ini !!!"); window.location.href="index.php"</script>';
 }
 
-include "../../conf/conn.php";
+include "conf/function.php";
+
 $nisn = $_GET['nisn'];
 
 $sql = "DELETE FROM siswa WHERE nisn ='$nisn'";
 
-$result = mysqli_query($kon, $sql);
+$result = crud($kon, $sql);
 
 if (!$result) {
   die("Connection failed: " . mysqli_connect_error());

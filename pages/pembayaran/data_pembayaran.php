@@ -59,13 +59,10 @@
                   <tbody>
 
                     <?php
-                    include "conf/conn.php";
+                    include "conf/function.php";
                     $no = 1;
                     // $data = mysqli_query($kon, "SELECT tb_pembayaran.*,tb_member.nama , tb_detail_pembayaran.id_paket, tb_detail_pembayaran.harga FROM tb_pembayaran INNER JOIN tb_member ON tb_member.id_member = tb_pembayaran.id_member INNER JOIN tb_detail_pembayaran ON tb_detail_pembayaran.id_pembayaran = tb_pembayaran.id_pembayaran WHERE tb_pembayaran.id_pembayaran");
-                    $sql = "SELECT * FROM siswa, spp,kelas WHERE siswa.id_kelas=kelas.id_kelas AND siswa.id_spp=spp.id_spp ORDER BY nama ASC";
-                    $dataQ = mysqli_query($kon, $sql);
-                    ?>
-                    <?php
+                    $dataQ = mysqli_query($kon, "SELECT * FROM siswa, spp,kelas WHERE siswa.id_kelas=kelas.id_kelas AND siswa.id_spp=spp.id_spp ORDER BY nama ASC");
                     if (mysqli_num_rows($dataQ) > 0) {
                       while ($data = mysqli_fetch_assoc($dataQ)) {
                         $data_pembayaran = mysqli_query($kon, "SELECT SUM(jumlah_bayar) as jumlah_bayar FROM pembayaran WHERE nisn='$data[nisn]'");
@@ -80,8 +77,6 @@
                           <td>
                             <?= $data['tahun'] ?> - <?= 'Rp. ', number_format($data['nominal']); ?>
                           </td>
-                          <!-- <td><?= $data['tahun'] ?></td>
-                          <td><?= 'Rp. ' .  number_format($data['nominal']); ?></td> -->
                           <td>
                             <?php
                             if ($sudah_bayar == 0) {
@@ -110,7 +105,8 @@
                           </td>
                         </tr>
                     <?php }
-                    } ?>
+                    }
+                    ?>
                   </tbody>
                 </table>
               </div>
