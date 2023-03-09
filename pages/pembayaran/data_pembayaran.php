@@ -35,7 +35,8 @@
             if ($_SESSION["level"] == "admin") {
             ?>
               <div class="box-header pb-3">
-                <a href="pages/cetak.php" target="_blank" class="btn btn-success" role="button" title="Laporan Transaksi"><i class="fas fa-print"></i> Print</a>
+                <!-- <a href="pages/cetak.php" target="_blank" class="btn btn-success" role="button" title="Laporan Transaksi"><i class="fas fa-print"></i> Print</a> -->
+                <a onclick="printData()" target="_blank" class="btn btn-success" name="cetak" role="button" title="Laporan Transaksi"><i class="fas fa-print"></i> Print</a>
               </div>
             <?php
             }

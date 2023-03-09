@@ -27,9 +27,9 @@
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
 
-  <link rel="stylesheet" href="plugins\datatables-bs4\css\dataTables.bootstrap4.css">
-  <link rel="stylesheet" href="plugins\datatables-bs4\css\dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../../media/css/jquery.dataTables.css">
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -45,9 +45,9 @@
     ?>
 
     <!-- Preloader -->
-    <!-- <div class="preloader flex-column justify-content-center align-items-center">
+    <div class="preloader flex-column justify-content-center align-items-center">
       <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-    </div> -->
+    </div>
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -223,7 +223,6 @@
       <!-- /.sidebar -->
     </aside>
 
-
     <!-- Content -->
     <?php include "conf/page.php"; ?>
     <!-- /Content -->
@@ -281,25 +280,121 @@
   <script src="dist/js/pages/dashboard.js"></script>
 
   <!-- Javascript Datatable -->
-  <script src="plugins\jquery\jquery.js"></script>
-  <script src="plugins\datatables\jquery.dataTables.js"></script>
+  <script src="plugins/jquery/jquery.js"></script>
+  <script src="plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="../../media/css/jquery.dataTables.css"></script>
+  <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="plugins/datatables-fixedheader/js/dataTables.fixedHeader.min.js"></script>
   <script type="text/javascript">
+    function printData() {
+      var divToPrint = document.getElementById("pembayaran");
+      var newWin = window.open("");
+      newWin.document.write('<html><head><title>DATA LAPORAN PEMBAYARAN SPP</title>');
+      newWin.document.write('<style>');
+      newWin.document.write('table { border-collapse: collapse; width: 100%; }');
+      newWin.document.write('th, td { text-align: left; padding: 8px; }');
+      newWin.document.write('tr:nth-child(even) { background-color: #f2f2f2; }');
+      newWin.document.write('th { background-color: #E5F0FF; color: white; }');
+      newWin.document.write('</style>');
+      newWin.document.write('</head><body>');
+      newWin.document.write(divToPrint.outerHTML);
+      newWin.document.write('</body></html>');
+      newWin.print();
+      newWin.close();
+    }
+
     $(document).ready(function() {
       $('#spp').DataTable();
+      scrollX: true
     });
+
     $(document).ready(function() {
       $('#kelas').DataTable();
+      scrollX: true
     });
+
     $(document).ready(function() {
       $('#siswa').DataTable();
+      scrollX: true
     });
+
     $(document).ready(function() {
       $('#petugas').DataTable();
+      scrollX: true
     });
+
+    // $(document).ready(function() {
+    //   $('#pembayaran').DataTable();
+    // });
+
+    // $(document).ready(function() {
+    //   $('#pembayaran').DataTable({
+    //     scrollX: true,
+    //   });
+    // });
+
     $(document).ready(function() {
-      $('#pembayaran').DataTable();
+      // Setup - add a text input to each footer cell
+      $('#pembayaran thead tr')
+        .clone(true)
+        .addClass('filters')
+        .appendTo('#pembayaran thead');
+
+      var table = $('#pembayaran').DataTable({
+        orderCellsTop: true,
+        fixedHeader: true,
+        scrollX: true,
+        responsive: true,
+        initComplete: function() {
+          var api = this.api();
+
+          // For each column
+          api
+            .columns()
+            .eq(0)
+            .each(function(colIdx) {
+              // Set the header cell to contain the input element
+              var cell = $('.filters th').eq(
+                $(api.column(colIdx).header()).index()
+              );
+              var title = $(cell).text();
+              $(cell).html('<input type="text" placeholder="' + title + '" />');
+
+              // On every keypress in this input
+              $(
+                  'input',
+                  $('.filters th').eq($(api.column(colIdx).header()).index())
+                )
+                .off('keyup change')
+                .on('change', function(e) {
+                  // Get the search value
+                  $(this).attr('title', $(this).val());
+                  var regexr = '({search})'; //$(this).parents('th').find('select').val();
+
+                  var cursorPosition = this.selectionStart;
+                  // Search the column for that value
+                  api
+                    .column(colIdx)
+                    .search(
+                      this.value != '' ?
+                      regexr.replace('{search}', '(((' + this.value + ')))') :
+                      '',
+                      this.value != '',
+                      this.value == ''
+                    )
+                    .draw();
+                })
+                .on('keyup', function(e) {
+                  e.stopPropagation();
+
+                  $(this).trigger('change');
+                  $(this)
+                    .focus()[0]
+                    .setSelectionRange(cursorPosition, cursorPosition);
+                });
+            });
+        },
+      });
     });
   </script>
 
